@@ -1,1 +1,12 @@
-asdasdasdasd
+olaname = dashboard do professor
+Obs colocar como h2 anuncio e anviso
+
+TextBanner = Pagina formulario banner
+
+detalhes banner =  envio do banner (para nós e professores) 
+
+
+PaginaModelador tiraro chat e colocar a tabela que nem está no canvas
+
+PagBanners = PaginaUploadBanner
+
