@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner Form</title>
+    <link rel="stylesheet" href="styles7.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <button class="back-btn">&larr;</button>
+            <h1>insira o texto do <span class="banner">banner</span></h1>
+            <button class="profile-btn">&#9679;</button>
+        </header>
+        <form>
+            <label for="title">Título:</label>
+            <input type="text" id="title" name="title">
+            
+            <label for="description">Descrição:</label>
+            <textarea id="description" name="description" placeholder="Por favor seja direto"></textarea>
+            
+            <label for="audience">Público alvo:</label>
+            <input type="text" id="audience" name="audience" placeholder="Ex: Integrado">
+            
+            <label for="start-date">Data inicial:</label>
+            <input type="text" id="start-date" name="start-date" placeholder="Ex: 10/03/2024">
+            
+            <label for="end-date">Data Final:</label>
+            <input type="text" id="end-date" name="end-date" placeholder="Ex: 10/03/2024">
+            
+            <label for="start-time">Horário de início:</label>
+            <input type="text" id="start-time" name="start-time" placeholder="Ex: 10:10">
+            
+            <label for="end-time">Horário de Término:</label>
+            <input type="text" id="end-time" name="end-time" placeholder="Ex: 10:10">
+            
+            <label for="type">Tipo:</label>
+            <select id="type" name="type">
+                <option value="aviso">Aviso</option>
+            </select>
+            
+            <label for="image-upload">Upload de imagem:</label>
+            <input type="file" id="image-upload" name="image-upload">
+            
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>

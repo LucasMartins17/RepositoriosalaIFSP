@@ -1,0 +1,107 @@
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: var(--grey--if);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+
+header {
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--white--if);
+    border-bottom: 1px solid var(--border--if);
+    /* position: sticky; */
+    top: 0;
+}
+
+.back-button {
+    width: 44px;
+    text-decoration: none;
+    color: var(--black--if);
+}
+
+.logo {
+    height: 80px;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--white--if);
+    padding: 2px; /* Adiciona um padding para dar um espaçamento interno */
+}
+
+.container h1{
+    font-size: 90px;
+}
+
+
+.container .descer{
+    color:  #008000;
+    margin-left: 29%;
+    margin-top: -1%;
+    
+}
+
+
+.container .banners{
+    width: 50%  ;
+}
+
+.container .banners > h2{
+    text-align: justify;
+    font-weight: 100;
+    font-size: 30px;
+}
+
+.container .banners >  .banner{
+    border: 2px solid rgb(167, 162, 162);
+    text-align: justify;
+    padding: 5vh;
+    margin-top: -5%;
+}
+
+.container,.banners, .banner > h2{
+    margin-top: 4%;
+    font-weight: 100;
+    font-size: 40px;
+}
+
+.hidden-upload {
+    display: none;
+}
+
+.custom-upload {
+    display: inline-block;
+    width: 35%;
+    margin-top: 2%;
+    margin-left: 65%;
+    border: 1px solid black;
+    border-radius: 4vh;
+    font-size: 3vh;
+    padding: 2vh;
+    cursor: pointer;
+}
+
+
+
+
+

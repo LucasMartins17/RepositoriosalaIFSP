@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuncios</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="#"><img class="back-button" src="icons/back-button.svg" alt="Voltar"></a>
+        <img src="icons/ifsp_logo_itp.png" alt="Instituto Federal" class="logo">
+    </header>
+    <div class="container">
+        <h1>Insira o texto do</h1>
+        <h1 class="descer">Banner</h1>
+        <form>
+            <label for="title">Título:</label>
+            <input type="text" id="title" name="title">
+            
+            <label for="description">Descrição:</label>
+            <textarea id="description" name="description" placeholder="Por favor seja direto"></textarea>
+            
+            <label for="audience">Público alvo:</label>
+            <input type="text" id="audience" name="audience" placeholder="Ex: Integrado">
+            
+            <label for="start-date">Data inicial:</label>
+            <input type="date" id="start-date" name="start-date" placeholder="Ex: 10/03/2024">
+            
+            <label for="end-date">Data Final:</label>
+            <input type="date" id="end-date" name="end-date" placeholder="Ex: 10/03/2024">
+            
+            <label for="start-time">Horário de início:</label>
+            <input type="time" id="start-time" name="start-time" placeholder="Ex: 10:10">
+            
+            <label for="end-time">Horário de Término:</label>
+            <input type="time" id="end-time" name="end-time" placeholder="Ex: 10:10">
+            
+            <label for="type">Tipo:</label>
+            <select id="type" name="type">
+                <option value="aviso">Aviso</option>
+                <option value="anuncio">Anuncio</option>
+            </select>
+            <label class="custom-upload" for="file-upload">Upload do banner</label>
+            <input type="file" id="file-upload" class="hidden-upload">
+            
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>

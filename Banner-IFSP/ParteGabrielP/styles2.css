@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.container {
+    text-align: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 400px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back-button, .menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.title-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.title-section img {
+    width: 24px;
+    height: 24px;
+}
+
+.title-section h1 {
+    font-size: 24px;
+    color: #2c3e50;
+}
+
+.add-button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 20px 0;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.notice {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: left;
+}
+
+.notice-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.notice-header img {
+    width: 32px;
+    height: 32px;
+}
+
+.notice-header .date {
+    color: #888;
+    font-size: 12px;
+}
+
+.notice-header .name {
+    font-weight: bold;
+}
+
+.notice-body p {
+    margin: 5px 0;
+}
+
+footer {
+    margin-top: 20px;
+}
+
+footer img {
+    width: 100px;
+    height: auto;
+}
