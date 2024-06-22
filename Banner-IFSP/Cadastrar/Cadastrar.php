@@ -1,5 +1,5 @@
 <?php
-require "../../Conexao/Conexao.php";
+require "../Conexao/Conexao.php";
 
 $nome = $_POST['nome'];
 $prontuario = $_POST['prontuario'];

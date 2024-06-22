@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "../../Conexao/Conexao.php";
+require "../Conexao/Conexao.php";
 
 $email = $_POST['email'];
 $senha = $_POST['senha'];
