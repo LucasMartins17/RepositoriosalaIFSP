@@ -129,10 +129,18 @@ a, p{
 }
 
 .login-form .connect-button:hover {
-  background-color: #218838; /* Cor mais escura ao passar o mouse */
+  background-color: #218838; 
 }
 
 
 .login-form .signup-link:hover {
-  text-decoration: underline; /* Sublinhar ao passar o mouse */
+  text-decoration: underline; 
+}
+
+.error-message{
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    margin-top: -27%;
+
 }
