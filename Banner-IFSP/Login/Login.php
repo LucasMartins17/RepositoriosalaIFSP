@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="styles5.css">
 </head>
 <body>
+    <?php
+    session_start();
+    if (isset($_SESSION['email'])) {
+        header("Location: ../PastaTextBanner/TxtBanner.php");
+        exit();
+    }
+    ?>
     <div class="container">
         <header>
             <button class="back-button">
@@ -32,7 +39,6 @@
                 <p>Não tem conta? <a href="../Cadastrar/Cadastrar.html" class="signup-link">clique aqui</a></p>
             </form>
             <?php
-            session_start();
             if (isset($_SESSION['erro'])) {
                 echo "<p class='error-message'>" . $_SESSION['erro'] . "</p>";
                 unset($_SESSION['erro']);

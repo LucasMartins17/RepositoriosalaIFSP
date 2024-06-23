@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <?php
+    session_start();
+    if (!isset($_SESSION['email'])) {
+        header("Location: ../Login/login.php");
+        exit();
+    }
+    ?>
     <header>
         <a href="#"><img class="back-button" src="icons/back-button.svg" alt="Voltar"></a>
         <img src="icons/ifsp_logo_itp.png" alt="Instituto Federal" class="logo">
