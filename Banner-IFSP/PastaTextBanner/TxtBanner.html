@@ -14,36 +14,35 @@
     <div class="container">
         <h1>Insira o texto do</h1>
         <h1 class="descer">Banner</h1>
-        <form>
+        <form action="UploadBanner.php" method="post" enctype="multipart/form-data">
             <label for="title">Título:</label>
             <input type="text" id="title" name="title">
             
-            <label for="description">Descrição:</label>
-            <textarea id="description" name="description" placeholder="Por favor seja direto"></textarea>
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" placeholder="Por favor seja direto"></textarea>
             
-            <label for="audience">Público alvo:</label>
-            <input type="text" id="audience" name="audience" placeholder="Ex: Integrado">
+            <label for="alvo">Público alvo:</label>
+            <input type="text" id="alvo" name="alvo" placeholder="Ex: Integrado">
             
-            <label for="start-date">Data inicial:</label>
-            <input type="date" id="start-date" name="start-date" placeholder="Ex: 10/03/2024">
+            <label for="dataInit">Data inicial:</label>
+            <input type="date" id="dataInit" name="dataInit" placeholder="Ex: 10/03/2024">
             
-            <label for="end-date">Data Final:</label>
-            <input type="date" id="end-date" name="end-date" placeholder="Ex: 10/03/2024">
+            <label for="dataFim">Data Final:</label>
+            <input type="date" id="dataFim" name="dataFim" placeholder="Ex: 10/03/2024">
             
-            <label for="start-time">Horário de início:</label>
-            <input type="time" id="start-time" name="start-time" placeholder="Ex: 10:10">
+            <label for="horaInit">Horário de início:</label>
+            <input type="time" id="horaInit" name="horaInit" placeholder="Ex: 10:10">
             
-            <label for="end-time">Horário de Término:</label>
-            <input type="time" id="end-time" name="end-time" placeholder="Ex: 10:10">
+            <label for="horaFim">Horário de Término:</label>
+            <input type="time" id="horaFim" name="horaFim" placeholder="Ex: 10:10">
             
-            <label for="type">Tipo:</label>
-            <select id="type" name="type">
+            <label for="tipo">Tipo:</label>
+            <select id="tipo" name="tipo">
                 <option value="aviso">Aviso</option>
                 <option value="anuncio">Anuncio</option>
             </select>
-            <label class="custom-upload" for="file-upload">Upload do banner</label>
-            <input type="file" id="file-upload" class="hidden-upload">
-            
+            <label class="custom-upload" for="banner">Upload do banner</label>
+            <input type="file" id="banner" name="imagens[]" class="hidden-upload" multiple required>
             <button type="submit">Enviar</button>
         </form>
     </div>

@@ -12,7 +12,7 @@ if ($resultado) {
     $nLinhas = mysqli_num_rows($resultado);
     if ($nLinhas == 1) {
         $_SESSION['email'] = $email;
-        header("Location: deucertologar.html");
+        header("Location: ../PastaTextBanner/TxtBanner.html");
         exit();
     } else {
         $_SESSION['erro'] = "Email ou senha inválidos.";
