@@ -15,9 +15,16 @@
         </header>
         <main>
             <div class="box">
-                <a href="" class="anucnio">
-                   <p>Anuncio!</p>
-                </a>
+                <div class="anucnio" id="anuncio">
+                    <?php
+                    $dir = "Uploads/";
+                    $images = glob($dir . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
+
+                    foreach($images as $image) {
+                        echo '<img src="' . $image . '" alt="Imagem do Anúncio" style="max-width: 100%; height: auto; display: none;">';
+                    }
+                    ?>
+                </div>
 
                 <a href="Login/login.php" class="anucnio-btn">
                     <img src="icons/Anuncie-aqui.webp" alt="Anuncie aqui">
@@ -41,5 +48,21 @@
         </footer>
 
     </div>
+    <script>
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('#anuncio img');
+        const totalImages = images.length;
+
+        function showNextImage() {
+            images[currentImageIndex].style.display = 'none';
+            currentImageIndex = (currentImageIndex + 1) % totalImages;
+            images[currentImageIndex].style.display = 'block';
+        }
+
+        if (totalImages > 0) {
+            images[0].style.display = 'block';
+            setInterval(showNextImage, 3000); // 30000ms = 30 seconds
+        }
+    </script>
 </body>
 </html>

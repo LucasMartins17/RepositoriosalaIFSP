@@ -30,8 +30,7 @@ header h1{
     font-size: 64px;
 }
 .anucnio {
-    border: 1px solid rgb(223, 220, 220);
-    background-color: #04f50c;
+ 
     margin-left: 4%;
     width: 900px;
     height: 500px;
@@ -39,11 +38,10 @@ header h1{
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: 5vh;
+
 }
-.anucnio > p{
-    color: white;
-    font-weight: bold;
-}
+
 
 .anucnio-btn     {
     display: flex;
@@ -59,6 +57,7 @@ header h1{
     width: 500px;
     height: 50px;
     margin-left: 3.5%;
+    margin-bottom: 6vh;
 }
 
 .anucnio-btn > img {
