@@ -1,7 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 require "../Conexao/Conexao.php";
 
 // Obter os dados do formulário
@@ -41,7 +38,7 @@ if (empty($titulo) || empty($descricao) || empty($pubAlvo) || empty($dataInit) |
             foreach ($imagens['tmp_name'] as $img => $tmp_name) {
                 if ($tmp_name) {
                     $imagem_nome = $imagens['name'][$img];
-                    $destino = "../Uploads/" . $imagem_nome;
+                    $destino = "../Uploads/" . $imagem_nome; // Definindo $destino corretamente
                     $destino2 = "Uploads/" . $imagem_nome;
                     move_uploaded_file($tmp_name, $destino);
 
