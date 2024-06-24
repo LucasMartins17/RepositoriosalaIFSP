@@ -34,7 +34,7 @@
             <div class="projetos">
                 <div class="button">
                     <img src="icons/Armario.png" alt="">
-                    <a href="#">Reserve <span class="highlight">seu</span> armário</a>
+                    <a href="PastaBanners/pagBanners.php">Reserve <span class="highlight">seu</span> armário</a>
                 </div>
                 <div class="button">
                     <img src="icons/Feedback.webp" alt="">

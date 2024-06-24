@@ -64,10 +64,10 @@ CREATE TABLE Form (
     Id INT AUTO_INCREMENT PRIMARY KEY,
     Titulo VARCHAR(255) NOT NULL,
     Descricao VARCHAR(255) NOT NULL,
-    DtInicio DATETIME NOT NULL,
-    DtFinal DATETIME NOT NULL,
-    HrIni DATETIME NOT NULL,
-    HrFinal DATETIME NOT NULL,
+    DtInicio date NOT NULL,
+    DtFinal date NOT NULL,
+    HrIni time NOT NULL,
+    HrFinal time NOT NULL,
     Tipo VARCHAR(255) NOT NULL,
     pubAlv VARCHAR(255) NOT NULL
 );
