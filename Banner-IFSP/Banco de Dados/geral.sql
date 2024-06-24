@@ -89,7 +89,7 @@
     CREATE TABLE Armario (
         Id INT AUTO_INCREMENT PRIMARY KEY,
         Estado Boolean NOT NULL,
-        Id_usuario INT NOT NULL,
+        Id_usuario INT,
         Nome VARCHAR (255) NOT NULL,
         Dt_Emprestimo DATETIME NOT NULL,
         FOREIGN KEY (Id_usuario) REFERENCES usuario(Id)
