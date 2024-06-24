@@ -7,13 +7,35 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <?php
-    session_start();
-    if (!isset($_SESSION['email'])) {
-        header("Location: ../Login/login.php");
-        exit();
-    }
-    ?>
+<?php
+session_start();
+
+// Verifique se o usuário está logado
+if (!isset($_SESSION['email'])) {
+    header("Location: ../Login/login.php");
+    exit();
+}
+
+// Verifique o cargo do usuário (você deve ter essa informação no banco de dados)
+$cargo = $_SESSION['cargo']; // Suponha que o cargo esteja armazenado na sessão
+
+// Redirecione com base no cargo
+if ($cargo === 'usuario') {
+    header("Location: ../UsuarioBanner/TxtBanner.php");
+    exit();
+} elseif ($cargo === 'adm') {
+    // Redirecione para outra página de acordo com o cargo de administrador
+    // Por exemplo: header("Location: ../AdminPage.php");
+    // Substitua "../AdminPage.php" pelo caminho correto para a página de administração
+    // Se você tiver diferentes tipos de administradores, ajuste o redirecionamento conforme necessário
+    // ...
+} else {
+    // Redirecione para uma página padrão (caso o cargo não seja reconhecido)
+    header("Location: ../PaginaPadrao.php");
+    exit();
+}
+?>
+>
     <header>
         <a href="#"><img class="back-button" src="icons/back-button.svg" alt="Voltar"></a>
         <img src="icons/ifsp_logo_itp.png" alt="Instituto Federal" class="logo">

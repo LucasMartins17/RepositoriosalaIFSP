@@ -16,7 +16,7 @@
     <div class="container">
         <h1>Ola <span>Name!</span></h1>
         <div class="banners">
-            <h2>Banners</h2>
+            <h2>Banners em rotação:</h2>
             <?php
             require '../Conexao/Conexao.php';
 

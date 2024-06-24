@@ -19,7 +19,7 @@
         <img src="icons/ifsp_logo_itp.png" alt="Instituto Federal" class="logo">
     </header>
     <div class="container">
-        <h1>Insira o texto do</h1>
+        <h1>Insira as informações do</h1>
         <h1 class="descer">Banner</h1>
         <form action="UploadBanner.php" method="post" enctype="multipart/form-data">
             <label for="title">Título:</label>
