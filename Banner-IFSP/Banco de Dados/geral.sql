@@ -46,15 +46,14 @@
         email VARCHAR(255) NOT NULL,
         senha VARCHAR(255) NOT NULL,
         prontuario VARCHAR(255) NOT NULL,
-        funcao VARCHAR(255) NOT NULL,
         dataInscricao VARCHAR(255) NOT NULL,
         FOREIGN KEY (id_func) REFERENCES funcao(Id)
     );
 
     ------------------------------ Inputs do Adm Geral ------------------------------
 
-    INSERT INTO usuario (id_func, CPF, nome, email, senha, prontuario, funcao, dataInscricao)
-    VALUES (4, '00000000000', 'User 0', 'userEmail@gmail.com', '12345678', '0000000', 'Adm Geral', now());
+    INSERT INTO usuario (id_func, CPF, nome, email, senha, prontuario, dataInscricao)
+    VALUES (4, '00000000000', 'User 0', 'userEmail@gmail.com', '12345678', '0000000', now());
 
 
     ----------------------------------- Parte do Grupo dos Anuncios -----------------------------------
