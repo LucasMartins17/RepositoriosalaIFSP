@@ -20,23 +20,26 @@
             <?php
             require '../Conexao/Conexao.php';
 
-            $sql = "SELECT f.Titulo, f.Descricao, f.DtInicio, u.nome AS Responsavel
-                    FROM Form f
-                    JOIN usuario u ON f.Id = u.Id";
-            $result = $conexao->query($sql);
-
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo "<div class='banner'>";
-                    echo "<h2>Responsável: " . $row['Responsavel'] . "</h2>";
-                    echo "<h2>Título: " . $row['Titulo'] . "</h2>";
-                    echo "<h2>Data de Entrega: " . $row['DtInicio'] . "</h2>";
-                    echo "<h2>Descrição: " . $row['Descricao'] . "</h2>";
-                    echo "</div>";
-                }
-            } else {
-                echo "Nenhum banner encontrado.";
-            }
+            $sql = "SELECT f.Titulo, f.Descricao, f.DtInicio, f.DtFinal, f.HrIni, f.HrFinal, f.Tipo, f.pubAlv
+            FROM Form f";
+    $result = $conexao->query($sql);
+    
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo "<div class='banner'>";
+            echo "<h2>Título: " . $row['Titulo'] . "</h2>";
+            echo "<h2>Data de Início: " . $row['DtInicio'] . "</h2>";
+            echo "<h2>Data de Término: " . $row['DtFinal'] . "</h2>";
+            echo "<h2>Horário de Início: " . $row['HrIni'] . "</h2>";
+            echo "<h2>Horário de Término: " . $row['HrFinal'] . "</h2>";
+            echo "<h2>Tipo: " . $row['Tipo'] . "</h2>";
+            echo "<h2>Publicidade/Alvo: " . $row['pubAlv'] . "</h2>";
+            echo "</div>";
+        }
+    } else {
+        echo "Nenhum banner encontrado.";
+    }
+    
 
             $conexao->close();
             ?>
