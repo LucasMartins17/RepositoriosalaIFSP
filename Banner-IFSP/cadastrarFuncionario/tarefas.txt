@@ -1,0 +1,7 @@
+fazer a header (require da header.php)
+terminar de implementar a logica de invisbilidade em criticas e sugestoes
+permitir apenas adm acessar a pagina
+inserir o nome de quem fez a alteracao da visibilidade no banco
+fazer o sistema de logout 
+
+
