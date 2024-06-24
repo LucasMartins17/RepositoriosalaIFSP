@@ -1,46 +1,25 @@
-<?php
-session_start();
-if (!isset($_SESSION['email'])) {
-    header("Location: ../Login/login.php");
-    exit();
-}
-
-// Conectar ao banco de dados
-require "../Conexao/Conexao.php";
-
-// Obter o email do usuário logado
-$email = $_SESSION['email'];
-
-// Consultar o idFunc do usuário logado
-$query = "SELECT idFunc FROM usuario WHERE email = ?";
-$stmt = mysqli_prepare($conexao, $query);
-mysqli_stmt_bind_param($stmt, "s", $email);
-mysqli_stmt_execute($stmt);
-mysqli_stmt_bind_result($stmt, $idFunc);
-mysqli_stmt_fetch($stmt);
-mysqli_stmt_close($stmt);
-
-// Verificar se o idFunc é 5
-if ($idFunc == 5) {
-    header("Location: ../UsuarioBanner/TxtBanner.php");
-    exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anuncios</title>
+    <title>Informações anuncios</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <?php
+    session_start();
+    if (!isset($_SESSION['email'])) {
+        header("Location: ../Login/login.php");
+        exit();
+    }
+    ?>
     <header>
         <a href="#"><img class="back-button" src="icons/back-button.svg" alt="Voltar"></a>
         <img src="icons/ifsp_logo_itp.png" alt="Instituto Federal" class="logo">
     </header>
     <div class="container">
-        <h1>Insira o texto do</h1>
+        <h1>Insira o ok texto do</h1>
         <h1 class="descer">Banner</h1>
         <form action="UploadBanner.php" method="post" enctype="multipart/form-data">
             <label for="title">Título:</label>
