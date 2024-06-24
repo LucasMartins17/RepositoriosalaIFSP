@@ -11,14 +11,11 @@ $id_func = 5; // Definindo "usuario normal" como padrão
 if (empty($nome) || empty($prontuario) || empty($cpf) || empty($email) || empty($senha)) {
     echo "Preencha todos os campos corretamente";
 } else {
-    $comando = "INSERT INTO usuario (id_func, CPF, nome, email, senha, prontuario, funcao, dataInscricao) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())";
+    $comando = "INSERT INTO usuario (idFunc, CPF, nome, email, senha, prontuario, dataInscricao) VALUES (?, ?, ?, ?, ?, ?, NOW())";
     $stmt = mysqli_prepare($conexao, $comando);
 
     if ($stmt) {
-        // Mapear o id_func para o nome da função correspondente
-        $funcao = "Usuario"; // Nome correspondente ao id_func padrão
-
-        mysqli_stmt_bind_param($stmt, "issssss", $id_func, $cpf, $nome, $email, $senha, $prontuario, $funcao);
+        mysqli_stmt_bind_param($stmt, "isssss", $id_func, $cpf, $nome, $email, $senha, $prontuario);
 
         $resultado = mysqli_stmt_execute($stmt);
 

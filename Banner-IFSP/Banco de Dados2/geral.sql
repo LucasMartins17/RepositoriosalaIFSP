@@ -9,7 +9,7 @@
 
     -- Criação da tabela funcao
     CREATE TABLE funcao (
-        Id INT AUTO_INCREMENT PRIMARY KEY,
+        idFunc INT AUTO_INCREMENT PRIMARY KEY,
         nomeFunc VARCHAR(255) NOT NULL,
         perm_Adm_FB BOOLEAN NOT NULL,
         perm_Adm_An BOOLEAN NOT NULL,
@@ -39,28 +39,28 @@
 
     -- Criação da tabela usuario
     CREATE TABLE usuario (
-        Id INT AUTO_INCREMENT PRIMARY KEY,
-        id_func INT NOT NULL,
+        idUsuario INT AUTO_INCREMENT PRIMARY KEY,
+        idFunc INT NOT NULL,
         CPF CHAR(11) NOT NULL,
         nome VARCHAR(255) NOT NULL UNIQUE,
         email VARCHAR(255) NOT NULL,
         senha VARCHAR(255) NOT NULL,
         prontuario VARCHAR(255) NOT NULL,
         dataInscricao VARCHAR(255) NOT NULL,
-        FOREIGN KEY (id_func) REFERENCES funcao(Id)
+        FOREIGN KEY (idFunc) REFERENCES funcao(idFunc)
     );
 
     ------------------------------ Inputs do Adm Geral ------------------------------
 
-    INSERT INTO usuario (id_func, CPF, nome, email, senha, prontuario, dataInscricao)
-    VALUES (4, '00000000000', 'User 0', 'userEmail@gmail.com', '12345678', '0000000', now());
+    INSERT INTO usuario (CPF, nome, email, senha, prontuario, dataInscricao)
+    VALUES ('00000000000', 'User 0', 'userEmail@gmail.com', '12345678', '0000000', now());
 
 
     ----------------------------------- Parte do Grupo dos Anuncios -----------------------------------
 
     -- Criação da tabela Form
     CREATE TABLE Form (
-        Id INT AUTO_INCREMENT PRIMARY KEY,
+        IdForm INT AUTO_INCREMENT PRIMARY KEY,
         Titulo VARCHAR(255) NOT NULL,
         Descricao VARCHAR(255) NOT NULL,
         DtInicio date NOT NULL,
@@ -73,11 +73,11 @@
 
     -- Criação da tabela Artes
     CREATE TABLE Artes (
-        Id_artes INT,
+        IdArtes INT,
         Titulo VARCHAR(255),
         caminhoImg VARCHAR(255),
-        PRIMARY KEY (Id_artes),
-        FOREIGN KEY (Id_artes) REFERENCES Form(Id)
+        PRIMARY KEY (IdArtes),
+        FOREIGN KEY (IdArtes) REFERENCES Form(idForm)
     );
 
 
@@ -87,18 +87,18 @@
 
     -- Criação da tabela Form
     CREATE TABLE Armario (
-        Id INT AUTO_INCREMENT PRIMARY KEY,
+        idArmario INT AUTO_INCREMENT PRIMARY KEY,
         Estado Boolean NOT NULL,
         Id_usuario INT,
         Nome VARCHAR (255) NOT NULL,
         Dt_Emprestimo DATETIME NOT NULL,
-        FOREIGN KEY (Id_usuario) REFERENCES usuario(Id)
+        FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario)
     );
 
     ----------------------------------- Fim da parte do Grupo dos Armarios -----------------------------------
     ----------------------------------- Parte do Grupo do Feedback -----------------------------------
     CREATE TABLE feedback (
-        id INT AUTO_INCREMENT PRIMARY KEY,
+        idFeed INT AUTO_INCREMENT PRIMARY KEY,
         nome VARCHAR(65) NOT NULL,
         feedback VARCHAR(10) NOT NULL,
         conteudo TEXT NOT NULL,
@@ -109,7 +109,7 @@
     );
 
     CREATE TABLE sugestoes (
-        id INT AUTO_INCREMENT PRIMARY KEY,
+        idSugestion INT AUTO_INCREMENT PRIMARY KEY,
         nome VARCHAR(65) NOT NULL,
         email VARCHAR(125) NOT NULL,
         conteudo TEXT NOT NULL,
@@ -120,7 +120,7 @@
     );
 
     CREATE TABLE criticas (
-        id INT AUTO_INCREMENT PRIMARY KEY,
+        idCrit INT AUTO_INCREMENT PRIMARY KEY,
         conteudo TEXT NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         visible BOOLEAN DEFAULT TRUE,
@@ -129,7 +129,7 @@
     );
 
     CREATE TABLE denuncia (
-        id INT AUTO_INCREMENT PRIMARY KEY,
+        idDenuncia INT AUTO_INCREMENT PRIMARY KEY,
         usado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
     ----------------------------------- Fim da parte do Grupo do Feedback -----------------------------------
