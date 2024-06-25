@@ -1,31 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['email'])) {
-    header("Location: ../Login/login.php");
-    exit();
-}
-
-// Conectar ao banco de dados
-require "../Conexao/Conexao.php";
-
-// Obter o email do usuário logado
-$email = $_SESSION['email'];
-
-// Consultar o idFunc do usuário logado
-$query = "SELECT idFunc FROM usuario WHERE email = ?";
-$stmt = mysqli_prepare($conexao, $query);
-mysqli_stmt_bind_param($stmt, "s", $email);
-mysqli_stmt_execute($stmt);
-mysqli_stmt_bind_result($stmt, $idFunc);
-mysqli_stmt_fetch($stmt);
-mysqli_stmt_close($stmt);
-
-// Verificar se o idFunc é 5
-if ($idFunc == 5) {
-    header("Location: ../UsuarioBanner/TxtBanner.php");
-    exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -36,7 +8,7 @@ if ($idFunc == 5) {
 </head>
 <body>
     <header>
-        <a href="#"><img class="back-button" src="icons/back-button.svg" alt="Voltar"></a>
+        <a href="#" id="back-button"><img class="back-button" src="icons/back-button.svg" alt="Voltar"></a>
         <img src="icons/ifsp_logo_itp.png" alt="Instituto Federal" class="logo">
     </header>
     <div class="container">
@@ -74,5 +46,11 @@ if ($idFunc == 5) {
             <button type="submit">Enviar</button>
         </form>
     </div>
+    <script>
+        document.getElementById('back-button').addEventListener('click', function(event) {
+            event.preventDefault(); // Previne o comportamento padrão do link
+            history.back(); // Volta para a página anterior
+        });
+    </script>
 </body>
 </html>
