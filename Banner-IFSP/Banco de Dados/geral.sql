@@ -113,7 +113,6 @@ CREATE TABLE artes (
 
 -- Criação da tabela Artes
 CREATE TABLE Artes (
->>>>>>> 98de469d5d970d97f29c5ab576c5bba90294f22b
     IdArtes INT AUTO_INCREMENT PRIMARY KEY,
     IdForm INT,
     Titulo VARCHAR(255),

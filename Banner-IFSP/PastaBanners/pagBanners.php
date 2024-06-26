@@ -6,10 +6,6 @@ if (!isset($_SESSION['email'])) {
 }
 require "../Conexao/Conexao.php";
 
-$sql = "SELECT IdForm, Titulo, Descricao, DtInicio, DtFinal, HrIni, HrFinal, pubAlv FROM Form";
-$result = mysqli_query($conexao, $sql);
-
-
 // Obtém o email da sessão
 $email = $_SESSION['email'];
 
@@ -29,8 +25,10 @@ if ($resultado) {
     exit();
 }
 
+// Consulta para obter os banners da tabela UserForm
+$sql = "SELECT IdUserForm, Titulo, Descricao, DtInicio, DtFinal, HrIni, HrFinal, pubAlv FROM UserForm";
+$result = mysqli_query($conexao, $sql);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -48,14 +46,14 @@ if ($resultado) {
         <img src="icons/ifsp_logo_itp.png" alt="Instituto Federal" class="logo">
     </header>
     <div class="container">
-        <h1>Ola <span>Name!</span></h1>
+        <h1>Ola <span><?php echo $_SESSION['nome']; ?>!</span></h1>
         <div class="banners">
             <h2>Banners</h2>
             <?php
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
                     echo "<div class='banner'>";
-                    echo "<a href='detalhes_banner.php?id=" . $row["IdForm"] . "'>";
+                    echo "<a href='detalhes_banner.php?id=" . $row["IdUserForm"] . "'>";
                     echo "<h2>Responsável: " . $row["pubAlv"] . "</h2>";
                     echo "<h2>Título: " . $row["Titulo"] . "</h2>";
                     echo "<h2>Data de Entrada: " . $row["DtInicio"] . "</h2>";
