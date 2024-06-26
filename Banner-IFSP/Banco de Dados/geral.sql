@@ -51,9 +51,9 @@ CREATE TABLE usuario (
 );
 
 ------------------------------ Inputs do Adm Geral ------------------------------
-
-INSERT INTO usuario (id_func, CPF, nome, email, senha, prontuario, funcao, dataInscricao)
+INSERT INTO usuario (id_func, CPF, nome, email, senha, prontuario, dataInscricao)
 VALUES (4, '00000000000', 'User 0', 'userEmail@gmail.com', '12345678', '0000000', now());
+
 
 
 ----------------------------------- Parte do Grupo dos Anuncios -----------------------------------
