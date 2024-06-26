@@ -39,7 +39,7 @@ VALUES ('user', FALSE, FALSE, FALSE, FALSE, FALSE);
 
 -- Criação da tabela usuario
 CREATE TABLE usuario (
-    Id INT AUTO_INCREMENT PRIMARY KEY,
+    idUsuario INT AUTO_INCREMENT PRIMARY KEY,
     id_func INT NOT NULL,
     CPF CHAR(11) NOT NULL,
     nome VARCHAR(255) NOT NULL UNIQUE,
@@ -51,13 +51,9 @@ CREATE TABLE usuario (
 );
 
 ------------------------------ Inputs do Adm Geral ------------------------------
-<<<<<<< HEAD
-=======
 
->>>>>>> 45518cf38539cdcdad247684f38995c97b85325a
 INSERT INTO usuario (id_func, CPF, nome, email, senha, prontuario, dataInscricao)
 VALUES (4, '00000000000', 'User 0', 'userEmail@gmail.com', '12345678', '0000000', now());
-
 
 
 ----------------------------------- Parte do Grupo dos Anuncios -----------------------------------
@@ -88,9 +84,10 @@ CREATE TABLE UserForm (
     pubAlv VARCHAR(255) NOT NULL,
     NomeUsuario VARCHAR(255),
     EmailUsuario VARCHAR(255),
-    idUsuario INT,
+    idUsuario INT NOT NULL,
     FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario)
 );
+
 
 -- Criação da tabela Artes
 CREATE TABLE Artes (
