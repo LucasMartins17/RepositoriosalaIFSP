@@ -37,6 +37,7 @@ $row = $result->fetch_assoc();
                 <h2>Descrição: <?php echo $row["Descricao"]; ?></h2>
             </div>
         </div>
+        <button type="submit">Upload do banner</button>
     </div>
 </body>
 </html>
