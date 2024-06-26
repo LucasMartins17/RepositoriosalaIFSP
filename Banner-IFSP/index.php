@@ -10,19 +10,35 @@
 <body>
     <div class="container">
         <header>
-            <h1>Bem-vindo ao <br> totem do <span class="highlight">IF!</span></span></h1>
-            <img src="icons/ifsp_logo_itp.png" alt="Instituto Federal" class="logo">
+        <?php
+        
+            
+            echo'<h1>Bem-vindo ao <br> totem do <span class="highlight">IF!</span></span></h1>';
+
+           // <img src="icons/ifsp_logo_itp.png" alt="Instituto Federal" class="logo">
+            
+            session_start();
+
+            if (isset($_SESSION['email'])) {
+                // Usuário está logado
+                $userIcon = '<i class="fas fa-user"></i>'; // Exemplo de ícone de usuário
+            } else {
+                // Usuário não está logado
+                $userIcon = '<img src="caminho_para_imagem_anonima.jpg" alt="Usuário Anônimo">'; // Imagem para usuário anônimo
+            }
+        ?>    
+        
         </header>
         <main>
             <div class="box">
                 <div class="anucnio" id="anuncio">
                     <?php
-                    $dir = "Uploads/";
-                    $images = glob($dir . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
-
-                    foreach($images as $image) {
-                        echo '<img src="' . $image . '" alt="Imagem do Anúncio" style="max-width: 100%; height: auto; display: none;">';
-                    }
+                        $dir = "Uploads/";
+                        $images = glob($dir . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
+            
+                        foreach($images as $image) {
+                            echo '<img src="' . $image . '" alt="Imagem do Anúncio" style="max-width: 100%; height: auto; display: none;">';
+                        }
                     ?>
                 </div>
 
