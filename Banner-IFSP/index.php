@@ -26,7 +26,7 @@
                     ?>
                 </div>
 
-                <a href="Login/login.php" class="anucnio-btn">
+                <a href="Anuncieaqui/AnuncieAqui.html" class="anucnio-btn">
                     <img src="icons/Anuncie-aqui.webp" alt="Anuncie aqui">
                     <span>Anuncie aqui</span>
                 </a>

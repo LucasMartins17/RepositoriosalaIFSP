@@ -46,7 +46,6 @@ CREATE TABLE usuario (
     email VARCHAR(255) NOT NULL,
     senha VARCHAR(255) NOT NULL,
     prontuario VARCHAR(255) NOT NULL,
-    funcao VARCHAR(255) NOT NULL,
     dataInscricao VARCHAR(255) NOT NULL,
     FOREIGN KEY (id_func) REFERENCES funcao(Id)
 );
@@ -54,33 +53,49 @@ CREATE TABLE usuario (
 ------------------------------ Inputs do Adm Geral ------------------------------
 
 INSERT INTO usuario (id_func, CPF, nome, email, senha, prontuario, funcao, dataInscricao)
-VALUES (4, '00000000000', 'User 0', 'userEmail@gmail.com', '12345678', '0000000', 'Adm Geral', now());
+VALUES (4, '00000000000', 'User 0', 'userEmail@gmail.com', '12345678', '0000000', now());
 
 
 ----------------------------------- Parte do Grupo dos Anuncios -----------------------------------
 
 -- Criação da tabela Form
 CREATE TABLE Form (
-    Id INT AUTO_INCREMENT PRIMARY KEY,
+    IdForm INT AUTO_INCREMENT PRIMARY KEY,
     Titulo VARCHAR(255) NOT NULL,
     Descricao VARCHAR(255) NOT NULL,
-    DtInicio DATETIME NOT NULL,
-    DtFinal DATETIME NOT NULL,
-    HrIni DATETIME NOT NULL,
-    HrFinal DATETIME NOT NULL,
+    DtInicio DATE NOT NULL,
+    DtFinal DATE NOT NULL,
+    HrIni TIME NOT NULL,
+    HrFinal TIME NOT NULL,
     Tipo VARCHAR(255) NOT NULL,
     pubAlv VARCHAR(255) NOT NULL
 );
 
--- Criação da tabela Artes
-CREATE TABLE Artes (
-    Id_artes INT,
-    Titulo VARCHAR(255),
-    caminhoImg VARCHAR(255),
-    PRIMARY KEY (Id_artes),
-    FOREIGN KEY (Id_artes) REFERENCES Form(Id)
+-- Criação da tabela UserForm
+CREATE TABLE UserForm (
+    IdUserForm INT AUTO_INCREMENT PRIMARY KEY,
+    Titulo VARCHAR(255) NOT NULL,
+    Descricao VARCHAR(255) NOT NULL,
+    DtInicio DATE NOT NULL,
+    DtFinal DATE NOT NULL,
+    HrIni TIME NOT NULL,
+    HrFinal TIME NOT NULL,
+    Tipo VARCHAR(255) NOT NULL,
+    pubAlv VARCHAR(255) NOT NULL,
+    NomeUsuario VARCHAR(255),
+    EmailUsuario VARCHAR(255),
+    idUsuario INT,
+    FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario)
 );
 
+-- Criação da tabela Artes
+CREATE TABLE Artes (
+    IdArtes INT AUTO_INCREMENT PRIMARY KEY,
+    IdForm INT,
+    Titulo VARCHAR(255),
+    caminhoImg VARCHAR(255),
+    FOREIGN KEY (IdForm) REFERENCES Form(IdForm)
+);
 
 ----------------------------------- Fim da parte do Grupo dos Anuncios -----------------------------------
 
