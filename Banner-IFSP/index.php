@@ -1,3 +1,17 @@
+<?php
+    session_start();
+    if (isset($_SESSION['id_func'])) {
+        // Usuário está logado
+        $userIcon = '<a href="PastaOlaname/olaname.html"><img src="icons/user.svg" alt="user" class="logo" id=logo></a>'; // Exemplo de ícone de usuário
+    }elseif(isset($_SESSION['id_func']) == 5){
+        //Usuario Adm
+        $userIcon = '<a href="PastaBanners/detalhes_banner.php"><img src="icons/user.svg" alt="user" class="logo" id=logo></a>';
+    }else{
+        // Usuário não está logado
+        $userIcon = '<img src="icons/ifsp_logo_itp.png" alt="Usuário Anônimo">'; // Imagem para usuário anônimo
+    }
+
+?> 
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -10,24 +24,10 @@
 <body>
     <div class="container">
         <header>
-        <?php
-        
-            
-            echo'<h1>Bem-vindo ao <br> totem do <span class="highlight">IF!</span></span></h1>';
 
-           // <img src="icons/ifsp_logo_itp.png" alt="Instituto Federal" class="logo">
+            <h1>Bem-vindo ao <br> totem do <span class="highlight">IF!</span></span></h1>
             
-            session_start();
-
-            if (isset($_SESSION['email'])) {
-                // Usuário está logado
-                $userIcon = 'img src="icons/user.svg" alt="Instituto Federal" class="logo">'; // Exemplo de ícone de usuário
-            } else {
-                // Usuário não está logado
-                $userIcon = '<img src="caminho_para_imagem_anonima.jpg" alt="Usuário Anônimo">'; // Imagem para usuário anônimo
-            }
-        ?>    
-        
+            <?php echo $userIcon; ?>
         </header>
         <main>
             <div class="box">

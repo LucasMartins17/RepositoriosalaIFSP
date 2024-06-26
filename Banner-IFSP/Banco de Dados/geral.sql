@@ -17,6 +17,7 @@ CREATE TABLE funcao (
     perm_Adm_Geral BOOLEAN NOT NULL,
     perm_User BOOLEAN NOT NULL
 );
+
 ------------------------------ Inputs das Funções ------------------------------
 
 INSERT INTO funcao (nomeFunc, perm_Adm_FB, perm_Adm_An, perm_Adm_Ar, perm_Adm_Geral, perm_User)
@@ -39,7 +40,7 @@ VALUES ('user', FALSE, FALSE, FALSE, FALSE, FALSE);
 
 -- Criação da tabela usuario
 CREATE TABLE usuario (
-    Id INT AUTO_INCREMENT PRIMARY KEY,
+    idUsuario INT AUTO_INCREMENT PRIMARY KEY,
     id_func INT NOT NULL,
     CPF CHAR(11) NOT NULL,
     nome VARCHAR(255) NOT NULL UNIQUE,
@@ -51,10 +52,6 @@ CREATE TABLE usuario (
 );
 
 ------------------------------ Inputs do Adm Geral ------------------------------
-<<<<<<< HEAD
-=======
-
->>>>>>> 45518cf38539cdcdad247684f38995c97b85325a
 INSERT INTO usuario (id_func, CPF, nome, email, senha, prontuario, dataInscricao)
 VALUES (4, '00000000000', 'User 0', 'userEmail@gmail.com', '12345678', '0000000', now());
 
@@ -62,8 +59,8 @@ VALUES (4, '00000000000', 'User 0', 'userEmail@gmail.com', '12345678', '0000000'
 
 ----------------------------------- Parte do Grupo dos Anuncios -----------------------------------
 
--- Criação da tabela Form
-CREATE TABLE Form (
+-- Criação da tabela form
+CREATE TABLE form (
     IdForm INT AUTO_INCREMENT PRIMARY KEY,
     Titulo VARCHAR(255) NOT NULL,
     Descricao VARCHAR(255) NOT NULL,
@@ -72,11 +69,12 @@ CREATE TABLE Form (
     HrIni TIME NOT NULL,
     HrFinal TIME NOT NULL,
     Tipo VARCHAR(255) NOT NULL,
-    pubAlv VARCHAR(255) NOT NULL
+    pubAlv VARCHAR(255) NOT NULL,
+    userform_IdUserForm INT
 );
 
--- Criação da tabela UserForm
-CREATE TABLE UserForm (
+-- Criação da tabela userform
+CREATE TABLE userform (
     IdUserForm INT AUTO_INCREMENT PRIMARY KEY,
     Titulo VARCHAR(255) NOT NULL,
     Descricao VARCHAR(255) NOT NULL,
@@ -88,19 +86,31 @@ CREATE TABLE UserForm (
     pubAlv VARCHAR(255) NOT NULL,
     NomeUsuario VARCHAR(255),
     EmailUsuario VARCHAR(255),
-    idUsuario INT,
+    idUsuario INT NOT NULL,
     FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario)
 );
 
--- Criação da tabela Artes
-CREATE TABLE Artes (
+-- Adicionando a chave estrangeira à tabela form após a criação da tabela userform
+ALTER TABLE form
+ADD FOREIGN KEY (userform_IdUserForm) REFERENCES userform(IdUserForm);
+
+-- Criação da tabela form_has_usuario (tabela de relacionamento muitos-para-muitos entre form e usuario)
+CREATE TABLE form_has_usuario (
+    form_IdForm INT NOT NULL,
+    usuario_idUsuario INT NOT NULL,
+    PRIMARY KEY (form_IdForm, usuario_idUsuario),
+    FOREIGN KEY (form_IdForm) REFERENCES form(IdForm),
+    FOREIGN KEY (usuario_idUsuario) REFERENCES usuario(idUsuario)
+);
+
+-- Criação da tabela artes
+CREATE TABLE artes (
     IdArtes INT AUTO_INCREMENT PRIMARY KEY,
     IdForm INT,
     Titulo VARCHAR(255),
     caminhoImg VARCHAR(255),
-    FOREIGN KEY (IdForm) REFERENCES Form(IdForm)
+    FOREIGN KEY (IdForm) REFERENCES form(IdForm)
 );
-
 ----------------------------------- Fim da parte do Grupo dos Anuncios -----------------------------------
 
 ----------------------------------- Parte do Grupo dos Armarios -----------------------------------
