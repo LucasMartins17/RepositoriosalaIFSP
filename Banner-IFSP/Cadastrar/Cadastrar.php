@@ -11,7 +11,7 @@ $id_func = 5; // Definindo "usuario normal" como padrão
 if (empty($nome) || empty($prontuario) || empty($cpf) || empty($email) || empty($senha)) {
     echo "Preencha todos os campos corretamente";
 } else {
-    $comando = "INSERT INTO usuario (idFunc, CPF, nome, email, senha, prontuario, dataInscricao) VALUES (?, ?, ?, ?, ?, ?, NOW())";
+    $comando = "INSERT INTO usuario (id_func, CPF, nome, email, senha, prontuario, dataInscricao) VALUES (?, ?, ?, ?, ?, ?, NOW())";
     $stmt = mysqli_prepare($conexao, $comando);
 
     if ($stmt) {
@@ -31,3 +31,4 @@ if (empty($nome) || empty($prontuario) || empty($cpf) || empty($email) || empty(
     }
 }
 ?>
+    

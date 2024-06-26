@@ -1,9 +1,36 @@
 <?php
+session_start();
+if (!isset($_SESSION['email'])) {
+    header("Location: ../Login/login.php");
+    exit();
+}
 require "../Conexao/Conexao.php";
 
 $sql = "SELECT IdForm, Titulo, Descricao, DtInicio, DtFinal, HrIni, HrFinal, pubAlv FROM Form";
 $result = mysqli_query($conexao, $sql);
+
+
+// Obtém o email da sessão
+$email = $_SESSION['email'];
+
+// Consulta para obter o id_func do usuário
+$comando = "SELECT id_func FROM usuario WHERE email = '$email'";
+$resultado = mysqli_query($conexao, $comando);
+
+if ($resultado) {
+    $usuario = mysqli_fetch_assoc($resultado);
+    if ($usuario['id_func'] == 5) {
+        header("Location: ../index.php");
+        exit();
+    }
+} else {
+    $_SESSION['erro'] = "Erro na consulta ao banco de dados";
+    header("Location: ../Login/login.php");
+    exit();
+}
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-BR">

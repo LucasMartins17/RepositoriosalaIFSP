@@ -15,8 +15,8 @@ if ($resultado) {
         $_SESSION['email'] = $email;
         $_SESSION['nome'] = $usuario['nome']; // Adiciona o nome do usuário à sessão
 
-        // Verifica o idFunc do usuário
-        if ($usuario['idFunc'] == 5) {
+        // Verifica o id_func do usuário
+        if ($usuario['id_func'] == 5) {
             header("Location: ../UsuarioBanner/UserTxtBanner.php");
         } else {
             header("Location: ../PastaTextBanner/TxtBanner.php");

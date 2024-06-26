@@ -1,3 +1,32 @@
+<?php
+session_start();
+if (!isset($_SESSION['email'])) {
+    header("Location: ../Login/login.php");
+    exit();
+}
+
+// Conexão com o banco de dados
+require "../Conexao/Conexao.php";
+
+// Obtém o email da sessão
+$email = $_SESSION['email'];
+
+// Consulta para obter o id_func do usuário
+$comando = "SELECT id_func FROM usuario WHERE email = '$email'";
+$resultado = mysqli_query($conexao, $comando);
+
+if ($resultado) {
+    $usuario = mysqli_fetch_assoc($resultado);
+    if ($usuario['id_func'] == 5) {
+        header("Location: ../UsuarioBanner/UserTxtBanner.php");
+        exit();
+    }
+} else {
+    $_SESSION['erro'] = "Erro na consulta ao banco de dados";
+    header("Location: ../Login/login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -7,13 +36,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <?php
-    session_start();
-    if (!isset($_SESSION['email'])) {
-        header("Location: ../Login/login.php");
-        exit();
-    }
-    ?>
     <header>
         <a href="#" id="back-button"><img class="back-button" src="icons/back-button.svg" alt="Voltar"></a>
         <img src="icons/ifsp_logo_itp.png" alt="Instituto Federal" class="logo">
