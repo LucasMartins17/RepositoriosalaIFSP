@@ -1,7 +1,7 @@
--- Criação do banco de dados glg
+-- Criação do banco de dados geral
 CREATE DATABASE geral;
 
--- Selecionar o banco de dados glg
+-- Selecionar o banco de dados geral
 USE geral;
 
 -- Criação da tabela funcao
@@ -54,13 +54,30 @@ CREATE TABLE Form (
     pubAlv VARCHAR(255) NOT NULL
 );
 
+-- Criação da tabela UserForm
+CREATE TABLE UserForm (
+    IdUserForm INT AUTO_INCREMENT PRIMARY KEY,
+    Titulo VARCHAR(255) NOT NULL,
+    Descricao VARCHAR(255) NOT NULL,
+    DtInicio DATE NOT NULL,
+    DtFinal DATE NOT NULL,
+    HrIni TIME NOT NULL,
+    HrFinal TIME NOT NULL,
+    Tipo VARCHAR(255) NOT NULL,
+    pubAlv VARCHAR(255) NOT NULL,
+    NomeUsuario VARCHAR(255),
+    EmailUsuario VARCHAR(255),
+    idUsuario INT,
+    FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario)
+);
+
 -- Criação da tabela Artes
 CREATE TABLE Artes (
-    IdArtes INT,
+    IdArtes INT AUTO_INCREMENT PRIMARY KEY,
+    IdForm INT,
     Titulo VARCHAR(255),
     caminhoImg VARCHAR(255),
-    PRIMARY KEY (IdArtes),
-    FOREIGN KEY (IdArtes) REFERENCES Form(IdForm)
+    FOREIGN KEY (IdForm) REFERENCES Form(IdForm)
 );
 
 -- Criação da tabela Armario

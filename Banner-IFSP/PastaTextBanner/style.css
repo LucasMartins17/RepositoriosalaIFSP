@@ -23,7 +23,7 @@ header {
     background-color: var(--white--if);
     border-bottom: 1px solid var(--border--if);
     /* position: sticky; */
-    top: 0;
+    top: 9;
 }
 
 a#back-button {
@@ -39,11 +39,14 @@ a#back-button {
     height: 100%;
     text-decoration: none;
     color: var(--black--if);
+    margin-top: 29vh;
 }
 
 .logo {
     width: 90px;
     height: 90px;
+    margin-top: 29vh;
+   
 }
 
 .container {
@@ -54,7 +57,7 @@ a#back-button {
     text-align: center;
     background-color: var(--white--if);
     padding: 2px; /* Adiciona um padding para dar um espaçamento interno */
-    margin-top: -10vh;
+    margin-top:-4vh;
 }
 
 .container h1 {
