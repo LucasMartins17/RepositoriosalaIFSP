@@ -84,10 +84,10 @@ CREATE TABLE Artes (
 CREATE TABLE Armario (
     idArmario INT AUTO_INCREMENT PRIMARY KEY,
     Estado BOOLEAN NOT NULL,
-    Id_usuario INT,
-    Nome VARCHAR(255) NOT NULL,
+    idUsuario INT,
+    NomeArmario VARCHAR(255) NOT NULL,
     Dt_Emprestimo DATETIME NOT NULL,
-    FOREIGN KEY (Id_usuario) REFERENCES usuario(idUsuario)
+    FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario)
 );
 
 -- Criação da tabela feedback
