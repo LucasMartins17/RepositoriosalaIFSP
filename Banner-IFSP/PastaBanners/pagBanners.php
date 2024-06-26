@@ -1,7 +1,7 @@
 <?php
 require "../Conexao/Conexao.php";
 
-$sql = "SELECT Titulo, Descricao, DtInicio, DtFinal, HrIni, HrFinal, pubAlv FROM Form";
+$sql = "SELECT IdForm, Titulo, Descricao, DtInicio, DtFinal, HrIni, HrFinal, pubAlv FROM Form";
 $result = mysqli_query($conexao, $sql);
 ?>
 
@@ -28,6 +28,7 @@ $result = mysqli_query($conexao, $sql);
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
                     echo "<div class='banner'>";
+                    echo "<a href='detalhes_banner.php?id=" . $row["IdForm"] . "'>";
                     echo "<h2>Responsável: " . $row["pubAlv"] . "</h2>";
                     echo "<h2>Título: " . $row["Titulo"] . "</h2>";
                     echo "<h2>Data de Entrada: " . $row["DtInicio"] . "</h2>";
@@ -35,6 +36,7 @@ $result = mysqli_query($conexao, $sql);
                     echo "<h2>Hora de Entrada: " . $row["HrIni"] . "</h2>";
                     echo "<h2>Hora de Saída: " . $row["HrFinal"] . "</h2>";
                     echo "<h2>Descrição: " . $row["Descricao"] . "</h2>";
+                    echo "</a>";
                     echo "</div>";
                 }
             } else {
