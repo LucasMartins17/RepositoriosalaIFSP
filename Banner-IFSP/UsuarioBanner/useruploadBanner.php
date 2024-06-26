@@ -61,8 +61,8 @@ if (empty($titulo) || empty($descricao) || empty($pubAlvo) || empty($dataInit) |
                         foreach ($imagens['tmp_name'] as $img => $tmp_name) {
                             if ($tmp_name) {
                                 $imagem_nome = $imagens['name'][$img];
-                                $destino = "../Uploads/" . $imagem_nome;
-                                $destino2 = "Uploads/" . $imagem_nome;
+                                $destino = "../UserUploads/" . $imagem_nome;
+                                $destino2 = "UserUploads/" . $imagem_nome;
                                 move_uploaded_file($tmp_name, $destino);
 
                                 $comando3 = "INSERT INTO Artes (IdForm, Titulo, caminhoImg) VALUES (?, ?, ?)";
