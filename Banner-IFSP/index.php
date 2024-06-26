@@ -21,7 +21,7 @@
 
             if (isset($_SESSION['email'])) {
                 // Usuário está logado
-                $userIcon = '<i class="fas fa-user"></i>'; // Exemplo de ícone de usuário
+                $userIcon = 'img src="icons/user.svg" alt="Instituto Federal" class="logo">'; // Exemplo de ícone de usuário
             } else {
                 // Usuário não está logado
                 $userIcon = '<img src="caminho_para_imagem_anonima.jpg" alt="Usuário Anônimo">'; // Imagem para usuário anônimo
@@ -35,7 +35,7 @@
                     <?php
                         $dir = "Uploads/";
                         $images = glob($dir . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
-            
+
                         foreach($images as $image) {
                             echo '<img src="' . $image . '" alt="Imagem do Anúncio" style="max-width: 100%; height: auto; display: none;">';
                         }
