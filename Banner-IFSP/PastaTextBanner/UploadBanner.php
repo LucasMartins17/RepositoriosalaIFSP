@@ -42,7 +42,7 @@ if (empty($titulo) || empty($descricao) || empty($pubAlvo) || empty($dataInit) |
                     $destino2 = "Uploads/" . $imagem_nome;
                     move_uploaded_file($tmp_name, $destino);
 
-                    $comando2 = "INSERT INTO Artes (IdArtes, Titulo, caminhoImg) VALUES (?, ?, ?)";
+                    $comando2 = "INSERT INTO Artes (IdForm, Titulo, caminhoImg) VALUES (?, ?, ?)";
                     $stmt2 = mysqli_prepare($conexao, $comando2);
 
                     if ($stmt2) {
