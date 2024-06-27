@@ -26,7 +26,7 @@ if ($resultado) {
 }
 
 // Consulta para obter os banners da tabela UserForm
-$sql = "SELECT IdUserForm, Titulo, Descricao, DtInicio, DtFinal, HrIni, HrFinal, pubAlv FROM UserForm";
+$sql = "SELECT IdUserForm, Titulo, Descricao, DtInicio, DtFinal, HrIni, HrFinal, Tipo, pubAlv, NomeUsuario FROM UserForm";
 $result = mysqli_query($conexao, $sql);
 ?>
 
@@ -54,8 +54,10 @@ $result = mysqli_query($conexao, $sql);
                 while($row = mysqli_fetch_assoc($result)) {
                     echo "<div class='banner'>";
                     echo "<a href='detalhes_banner.php?id=" . $row["IdUserForm"] . "'>";
-                    echo "<h2>Responsável: " . $row["pubAlv"] . "</h2>";
+                    echo "<h2>Responsavel: " . $row["NomeUsuario"] . "</h2>";
                     echo "<h2>Título: " . $row["Titulo"] . "</h2>";
+                    echo "<h2>Publico alvo: " . $row["pubAlv"] . "</h2>";
+                    echo "<h2>Tipo: " . $row["Tipo"] . "</h2>";
                     echo "<h2>Data de Entrada: " . $row["DtInicio"] . "</h2>";
                     echo "<h2>Data de Saída: " . $row["DtFinal"] . "</h2>";
                     echo "<h2>Hora de Entrada: " . $row["HrIni"] . "</h2>";

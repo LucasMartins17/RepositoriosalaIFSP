@@ -3,7 +3,8 @@ require "../Conexao/Conexao.php";
 
 $id = $_GET['id'];
 
-$sql = "SELECT Titulo, Descricao, DtInicio, DtFinal, HrIni, HrFinal, pubAlv FROM Form WHERE IdForm = ?";
+
+$sql = "SELECT IdUserForm, Titulo, Descricao, DtInicio, DtFinal, HrIni, HrFinal, Tipo, pubAlv, NomeUsuario FROM UserForm WHERE IdUserForm = ?";
 $stmt = $conexao->prepare($sql);
 $stmt->bind_param("i", $id);
 $stmt->execute();
@@ -28,8 +29,10 @@ $row = $result->fetch_assoc();
         <h1>Detalhes</h1>
         <div class="banners">
             <div class="banner">
-                <h2>Responsável: <?php echo $row["pubAlv"]; ?></h2>
+                <h2>Responsável: <?php echo $row["NomeUsuario"]; ?></h2>
                 <h2>Título: <?php echo $row["Titulo"]; ?></h2>
+                <h2>Publico alvo: <?php echo $row["pubAlv"]; ?></h2>
+                <h2>Tipo: <?php echo $row["Tipo"]; ?></h2>
                 <h2>Data de Entrada: <?php echo $row["DtInicio"]; ?></h2>
                 <h2>Data de Saída: <?php echo $row["DtFinal"]; ?></h2>
                 <h2>Hora de Entrada: <?php echo $row["HrIni"]; ?></h2>
