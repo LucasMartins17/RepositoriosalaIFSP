@@ -134,3 +134,41 @@ CREATE TABLE Armario (
 );
 
 ----------------------------------- Fim da parte do Grupo dos Armarios -----------------------------------
+
+----------------------------------- Parte do Grupo do Feedback -----------------------------------
+CREATE TABLE feedback (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(65) NOT NULL,
+    feedback VARCHAR(10) NOT NULL,
+    conteudo TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    visible BOOLEAN DEFAULT TRUE,
+    modificado_por VARCHAR (65), 
+    ultima_modificacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE sugestoes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(65) NOT NULL,
+    email VARCHAR(125) NOT NULL,
+    conteudo TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    visible BOOLEAN DEFAULT TRUE,
+    modificado_por VARCHAR (65), 
+    ultima_modificacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE criticas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    conteudo TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    visible BOOLEAN DEFAULT TRUE,
+    modificado_por VARCHAR (65), 
+    ultima_modificacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE denuncia (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+----------------------------------- Fim da parte do Grupo do Feedback -----------------------------------
