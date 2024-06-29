@@ -12,8 +12,13 @@ $horaFim = $_POST['horaFim'];
 $tipo = $_POST['tipo'];
 $imagens = $_FILES['imagens'];
 
+// Verificar se existem imagens atuais
+if (isset($_POST['imagens_atual'])) {
+    $imagens_atual = $_POST['imagens_atual'];
+}
+
 // Validar campos obrigatórios
-if (empty($titulo) || empty($descricao) || empty($pubAlvo) || empty($dataInit) || empty($dataFim) || empty($horaInit) || empty($horaFim) || empty($tipo) || empty($imagens['name'][0])) {
+if (empty($titulo) || empty($descricao) || empty($pubAlvo) || empty($dataInit) || empty($dataFim) || empty($horaInit) || empty($horaFim) || empty($tipo)) {
     echo "Preencha todos os campos corretamente.";
 } else {
     // Garantir que as datas e horas estejam no formato correto
@@ -40,7 +45,18 @@ if (empty($titulo) || empty($descricao) || empty($pubAlvo) || empty($dataInit) |
         if ($resultado) {
             $form_id = mysqli_insert_id($conexao);
 
-            // Loop para cada imagem
+            // Processar imagens atuais
+            if (isset($imagens_atual)) {
+                foreach ($imagens_atual as $imagem_atual) {
+                    // Insira o caminho da imagem atual no banco de dados, se necessário
+                    // Exemplo: INSERT INTO Artes (IdForm, caminhoImg) VALUES (?, ?);
+                    // $stmt_imagem_atual = mysqli_prepare($conexao, $comando_imagem_atual);
+                    // mysqli_stmt_bind_param($stmt_imagem_atual, "is", $form_id, $imagem_atual);
+                    // mysqli_stmt_execute($stmt_imagem_atual);
+                }
+            }
+
+            // Processar novas imagens enviadas
             foreach ($imagens['tmp_name'] as $img => $tmp_name) {
                 if ($tmp_name) {
                     $imagem_nome = $imagens['name'][$img];

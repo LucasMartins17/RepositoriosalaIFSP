@@ -73,16 +73,22 @@ if ($result && $result->num_rows > 0) {
         </div>
         
         <!-- Formulário invisível para enviar os dados para o formulário de upload -->
-        <form id="formEnviar" action="UparBannerUSer/TxtBanner.php" method="post">
-            <input type="hidden" name="Titulo" value="<?php echo htmlspecialchars($row['Titulo']); ?>">
-            <input type="hidden" name="Descricao" value="<?php echo htmlspecialchars($row['Descricao']); ?>">
-            <input type="hidden" name="pubAlv" value="<?php echo htmlspecialchars($row['pubAlv']); ?>">
-            <input type="hidden" name="DtInicio" value="<?php echo htmlspecialchars($row['DtInicio']); ?>">
-            <input type="hidden" name="DtFinal" value="<?php echo htmlspecialchars($row['DtFinal']); ?>">
-            <input type="hidden" name="HrIni" value="<?php echo htmlspecialchars($row['HrIni']); ?>">
-            <input type="hidden" name="HrFinal" value="<?php echo htmlspecialchars($row['HrFinal']); ?>">
-            <input type="hidden" name="Tipo" value="<?php echo htmlspecialchars($row['Tipo']); ?>">
-        </form>
+       <!-- Formulário invisível para enviar os dados para o formulário de upload -->
+<form id="formEnviar" action="UparBannerUSer/TxtBanner.php" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="Titulo" value="<?php echo htmlspecialchars($row['Titulo']); ?>">
+    <input type="hidden" name="Descricao" value="<?php echo htmlspecialchars($row['Descricao']); ?>">
+    <input type="hidden" name="pubAlv" value="<?php echo htmlspecialchars($row['pubAlv']); ?>">
+    <input type="hidden" name="DtInicio" value="<?php echo htmlspecialchars($row['DtInicio']); ?>">
+    <input type="hidden" name="DtFinal" value="<?php echo htmlspecialchars($row['DtFinal']); ?>">
+    <input type="hidden" name="HrIni" value="<?php echo htmlspecialchars($row['HrIni']); ?>">
+    <input type="hidden" name="HrFinal" value="<?php echo htmlspecialchars($row['HrFinal']); ?>">
+    <input type="hidden" name="Tipo" value="<?php echo htmlspecialchars($row['Tipo']); ?>">
+    <!-- Adicionando os inputs para enviar as imagens -->
+    <?php foreach ($images as $index => $image): ?>
+        <input type="hidden" name="imagens_atual[]" value="<?php echo htmlspecialchars($image); ?>">
+    <?php endforeach; ?>
+</form>
+
 
         <button id="btnEnviarParaFormulario">Enviar para o formulário</button>
 
