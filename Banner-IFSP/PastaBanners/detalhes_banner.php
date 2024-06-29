@@ -9,20 +9,28 @@ $stmt = $conexao->prepare($sql);
 $stmt->bind_param("i", $id);
 $stmt->execute();
 $result = $stmt->get_result();
-$row = $result->fetch_assoc();
 $stmt->close();
 
-// Seleciona os caminhos das imagens relacionadas ao userform
-$sqlImages = "SELECT caminhoImg FROM Artes WHERE IdForm = ?";
-$stmtImages = $conexao->prepare($sqlImages);
-$stmtImages->bind_param("i", $id);
-$stmtImages->execute();
-$resultImages = $stmtImages->get_result();
-$images = [];
-while ($imgRow = $resultImages->fetch_assoc()) {
-    $images[] = $imgRow['caminhoImg'];
+if ($result && $result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+
+    // Seleciona os caminhos das imagens relacionadas ao userform
+    $sqlImages = "SELECT caminhoImg FROM Artes WHERE IdForm = ?";
+    $stmtImages = $conexao->prepare($sqlImages);
+    $stmtImages->bind_param("i", $id);
+    $stmtImages->execute();
+    $resultImages = $stmtImages->get_result();
+
+    $images = [];
+    while ($imgRow = $resultImages->fetch_assoc()) {
+        $images[] = "../". $imgRow['caminhoImg'];
+    }
+    $stmtImages->close();
+} else {
+    // Caso não haja resultados, pode-se redirecionar ou exibir uma mensagem de erro
+    echo "Banner não encontrado.";
+    exit;
 }
-$stmtImages->close();
 ?>
 
 <!DOCTYPE html>
@@ -51,24 +59,18 @@ $stmtImages->close();
                 <h2>Hora de Entrada: <?php echo $row["HrIni"]; ?></h2>
                 <h2>Hora de Saída: <?php echo $row["HrFinal"]; ?></h2>
                 <h2>Descrição: <?php echo $row["Descricao"]; ?></h2>
-                <h2>Imagens:</h2>
-                <?php foreach ($images as $image): ?>
-                    <img src="../<?php echo $image; ?>" alt="Banner Image" style="width: 200px; height: auto;">
-                <?php endforeach; ?>
+                
+                <?php if (!empty($images)): ?>
+                    <h2>Imagens:</h2>
+                    <div class="images-container">
+                        <?php foreach ($images as $image): ?>
+                            <br>
+                            <img src="<?php echo $image; ?>" alt="Imagem do Banner" width = " 200px">
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif;?>
             </div>
         </div>
-        <form action="UparBannerUser/TxtBanner.php" method="post">
-            <input type="hidden" name="NomeUsuario" value="<?php echo $row["NomeUsuario"]; ?>">
-            <input type="hidden" name="Titulo" value="<?php echo $row["Titulo"]; ?>">
-            <input type="hidden" name="pubAlv" value="<?php echo $row["pubAlv"]; ?>">
-            <input type="hidden" name="Tipo" value="<?php echo $row["Tipo"]; ?>">
-            <input type="hidden" name="DtInicio" value="<?php echo $row["DtInicio"]; ?>">
-            <input type="hidden" name="DtFinal" value="<?php echo $row["DtFinal"]; ?>">
-            <input type="hidden" name="HrIni" value="<?php echo $row["HrIni"]; ?>">
-            <input type="hidden" name="HrFinal" value="<?php echo $row["HrFinal"]; ?>">
-            <input type="hidden" name="Descricao" value="<?php echo $row["Descricao"]; ?>">
-            <button type="submit">Upload do banner</button>
-        </form>
     </div>
 </body>
 </html>
