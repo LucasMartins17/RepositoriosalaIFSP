@@ -29,7 +29,7 @@ $conn->close();
                     case 'bom':
                         $icon = 'good.svg';
                         break;
-                    case 'médio':
+                    case 'medio':
                         $icon = 'neutro.svg';
                         break;
                     case 'ruim':
