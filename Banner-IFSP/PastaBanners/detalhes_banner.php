@@ -23,7 +23,7 @@ if ($result && $result->num_rows > 0) {
 
     $images = [];
     while ($imgRow = $resultImages->fetch_assoc()) {
-        $images[] = "../". $imgRow['caminhoImg'];
+        $images[] = "../" . $imgRow['caminhoImg']; // Adiciona "../" ao início do caminho da imagem
     }
     $stmtImages->close();
 } else {
@@ -64,40 +64,12 @@ if ($result && $result->num_rows > 0) {
                     <h2>Imagens:</h2>
                     <div class="images-container">
                         <?php foreach ($images as $image): ?>
-                            <br>
-                            <img src="<?php echo $image; ?>" alt="Imagem do Banner" width="200px">
+                            <img src="<?php echo $image; ?>" alt="Imagem do Banner" width = "300px">
                         <?php endforeach; ?>
                     </div>
-                <?php endif;?>
+                <?php endif; ?>
             </div>
         </div>
-        
-        <!-- Formulário invisível para enviar os dados para o formulário de upload -->
-       <!-- Formulário invisível para enviar os dados para o formulário de upload -->
-<form id="formEnviar" action="UparBannerUSer/TxtBanner.php" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="Titulo" value="<?php echo htmlspecialchars($row['Titulo']); ?>">
-    <input type="hidden" name="Descricao" value="<?php echo htmlspecialchars($row['Descricao']); ?>">
-    <input type="hidden" name="pubAlv" value="<?php echo htmlspecialchars($row['pubAlv']); ?>">
-    <input type="hidden" name="DtInicio" value="<?php echo htmlspecialchars($row['DtInicio']); ?>">
-    <input type="hidden" name="DtFinal" value="<?php echo htmlspecialchars($row['DtFinal']); ?>">
-    <input type="hidden" name="HrIni" value="<?php echo htmlspecialchars($row['HrIni']); ?>">
-    <input type="hidden" name="HrFinal" value="<?php echo htmlspecialchars($row['HrFinal']); ?>">
-    <input type="hidden" name="Tipo" value="<?php echo htmlspecialchars($row['Tipo']); ?>">
-    <!-- Adicionando os inputs para enviar as imagens -->
-    <?php foreach ($images as $index => $image): ?>
-        <input type="hidden" name="imagens_atual[]" value="<?php echo htmlspecialchars($image); ?>">
-    <?php endforeach; ?>
-</form>
-
-
-        <button id="btnEnviarParaFormulario">Enviar para o formulário</button>
-
     </div>
-
-    <script>
-        document.getElementById('btnEnviarParaFormulario').addEventListener('click', function() {
-            document.getElementById('formEnviar').submit();
-        });
-    </script>
 </body>
 </html>
