@@ -1,5 +1,3 @@
--- Exclusão do banco de dados glg
-DROP DATABASE geral;
 
 -- Criação do banco de dados glg
 CREATE DATABASE geral;
@@ -52,10 +50,7 @@ CREATE TABLE usuario (
 );
 
 ------------------------------ Inputs do Adm Geral ------------------------------
-<<<<<<< HEAD
-=======
 
->>>>>>> 98de469d5d970d97f29c5ab576c5bba90294f22b
 INSERT INTO usuario (id_func, CPF, nome, email, senha, prontuario, dataInscricao)
 VALUES (4, '00000000000', 'User 0', 'userEmail@gmail.com', '12345678', '0000000', now());
 
@@ -93,7 +88,7 @@ CREATE TABLE userform (
     FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario)
 );
 
-<<<<<<< HEAD
+
 -- Adicionando a chave estrangeira à tabela form após a criação da tabela userform
 ALTER TABLE form
 ADD FOREIGN KEY (userform_IdUserForm) REFERENCES userform(IdUserForm);
@@ -108,8 +103,7 @@ CREATE TABLE form_has_usuario (
 );
 
 -- Criação da tabela artes
-CREATE TABLE artes (
-=======
+
 
 -- Criação da tabela Artes
 CREATE TABLE Artes (
