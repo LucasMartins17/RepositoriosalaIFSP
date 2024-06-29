@@ -48,7 +48,7 @@ $result = mysqli_query($conexao, $sql);
     <div class="container">
         <h1>Ola <span><?php echo $_SESSION['nome']; ?>!</span></h1>
         <div class="banners">
-            <h2>Banners</h2>
+            <h2>Banners recebidos</h2>
             <?php
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {

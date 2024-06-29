@@ -63,13 +63,28 @@ header {
     display: flex;
     margin-top: 7%;
     gap: 30px;
+    flex-direction: column;
+    text-align: justify;
 
 }
 
-.container .meus-anuncios > h2 {
+.container .meus-anuncios a{
     border:  1px  solid black;
     padding: 30px;
+    text-decoration: none;
+    color: black;
 
+
+}
+
+ a:hover{
+    background-color: #008000;
+    transition: 1.1s;
+}
+
+h2:hover{
+    color: white;
+    transition: 1.1s;
 }
 
 

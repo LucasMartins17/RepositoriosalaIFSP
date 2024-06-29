@@ -19,7 +19,7 @@ if ($resultado) {
         if ($usuario['id_func'] == 5) {
             header("Location: ../UsuarioBanner/UserTxtBanner.php");
         } else {
-            header("Location: ../PastaTextBanner/TxtBanner.php");
+            header("Location: ../PastaOlaname/olaname.php");
         }
         exit();
     } else {
