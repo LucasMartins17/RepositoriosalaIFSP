@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <img src="/ADMFeedback/assets/ifsp_logo_itp.png" alt="Instituto Federal" class="logo">
+        <img src="assets/ifsp_logo_itp.png" alt="Instituto Federal" class="logo">
     </header>
     <div class="container">
         <h1>Deixe sua Avaliação</h1>
