@@ -51,40 +51,50 @@ if (empty($titulo) || empty($descricao) || empty($pubAlvo) || empty($dataInit) |
             if ($resultadoForm) {
                 $idForm = mysqli_insert_id($conexao);
 
+                // Preparar caminho da imagem para inserção
+                $caminhoImg = ""; // Inicializar variável
+
+                // Para cada imagem enviada, realizar o upload
+                foreach ($imagens['tmp_name'] as $img => $tmp_name) {
+                    if ($tmp_name) {
+                        $imagem_nome = $imagens['name'][$img];
+                        $destino = "../UserUploads/" . $imagem_nome;
+                        $destino2 = "UserUploads/" . $imagem_nome;
+                        move_uploaded_file($tmp_name, $destino);
+
+                        // Definir o caminho da imagem para ser inserido em userform
+                        $caminhoImg = $destino2; // Usando o caminho relativo
+
+                        // Inserir dados na tabela artes
+                        $comandoArtes = "INSERT INTO artes (IdForm, Titulo, caminhoImg) VALUES (?, ?, ?)";
+                        $stmtArtes = mysqli_prepare($conexao, $comandoArtes);
+
+                        if ($stmtArtes) {
+                            mysqli_stmt_bind_param($stmtArtes, "iss", $idForm, $titulo, $caminhoImg);
+                            $resultadoArtes = mysqli_stmt_execute($stmtArtes);
+
+                            if (!$resultadoArtes) {
+                                throw new Exception(mysqli_error($conexao));
+                            }
+                        } else {
+                            throw new Exception(mysqli_error($conexao));
+                        }
+                    }
+                }
+
                 // Inserir dados na tabela userform
-                $comandoUserForm = "INSERT INTO userform (Titulo, Descricao, DtInicio, DtFinal, HrIni, HrFinal, Tipo, pubAlv, NomeUsuario, EmailUsuario, idUsuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $comandoUserForm = "INSERT INTO userform (Titulo, Descricao, DtInicio, DtFinal, HrIni, HrFinal, Tipo, pubAlv, NomeUsuario, EmailUsuario, idUsuario, caminhoImg) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $stmtUserForm = mysqli_prepare($conexao, $comandoUserForm);
 
                 if ($stmtUserForm) {
-                    mysqli_stmt_bind_param($stmtUserForm, "ssssssssssi", $titulo, $descricao, $dataInitFull, $dataFimFull, $horaInit, $horaFim, $tipo, $pubAlvo, $nomeUsuario, $emailUsuario, $idUsuario);
+                    mysqli_stmt_bind_param($stmtUserForm, "ssssssssssss", $titulo, $descricao, $dataInitFull, $dataFimFull, $horaInit, $horaFim, $tipo, $pubAlvo, $nomeUsuario, $emailUsuario, $idUsuario, $caminhoImg);
+                    
                     $resultadoUserForm = mysqli_stmt_execute($stmtUserForm);
 
                     if ($resultadoUserForm) {
-                        foreach ($imagens['tmp_name'] as $img => $tmp_name) {
-                            if ($tmp_name) {
-                                $imagem_nome = $imagens['name'][$img];
-                                $destino = "../UserUploads/" . $imagem_nome;
-                                $destino2 = "UserUploads/" . $imagem_nome;
-                                move_uploaded_file($tmp_name, $destino); 
-
-                                $comandoArtes = "INSERT INTO artes (IdForm, Titulo, caminhoImg) VALUES (?, ?, ?)";
-                                $stmtArtes = mysqli_prepare($conexao, $comandoArtes);
-
-                                if ($stmtArtes) {
-                                    // Use idForm ao invés de userform_id
-                                    mysqli_stmt_bind_param($stmtArtes, "iss", $idForm, $titulo, $destino2);
-                                    $resultadoArtes = mysqli_stmt_execute($stmtArtes);
-
-                                    if (!$resultadoArtes) {
-                                        throw new Exception(mysqli_error($conexao));
-                                    }
-                                } else {
-                                    throw new Exception(mysqli_error($conexao));
-                                }
-                            }
-                        }
                         mysqli_commit($conexao);
                         header("Location: ../index.php");
+                        exit();
                     } else {
                         throw new Exception(mysqli_error($conexao));
                     }
@@ -103,4 +113,3 @@ if (empty($titulo) || empty($descricao) || empty($pubAlvo) || empty($dataInit) |
     }
 }
 ?>
-    

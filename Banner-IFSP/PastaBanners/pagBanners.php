@@ -53,7 +53,7 @@ $result = mysqli_query($conexao, $sql);
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
                     echo "<div class='banner'>";
-                    echo "<a href='detalhes_banner.php?id=" . $row["IdUserForm"] . "'>";
+                    echo "<a href='InformacoesBanner.php?id=" . $row["IdUserForm"] . "'>";
                     echo "<h2>Responsavel: " . $row["NomeUsuario"] . "</h2>";
                     echo "<h2>Título: " . $row["Titulo"] . "</h2>";
                     echo "<h2>Publico alvo: " . $row["pubAlv"] . "</h2>";

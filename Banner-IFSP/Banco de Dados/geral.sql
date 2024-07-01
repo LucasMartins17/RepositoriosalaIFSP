@@ -85,6 +85,7 @@ CREATE TABLE userform (
     NomeUsuario VARCHAR(255),
     EmailUsuario VARCHAR(255),
     idUsuario INT NOT NULL,
+    caminhoImg VARCHAR(255), -- Novo campo adicionado para armazenar o caminho da imagem
     FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario)
 );
 

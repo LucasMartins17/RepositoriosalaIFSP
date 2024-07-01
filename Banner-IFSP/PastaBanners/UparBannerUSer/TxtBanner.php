@@ -26,6 +26,15 @@ if ($resultado) {
     header("Location: ../Login/login.php");
     exit();
 }
+
+$titulo = isset($_POST['Titulo']) ? $_POST['Titulo'] : '';
+$descricao = isset($_POST['Descricao']) ? $_POST['Descricao'] : '';
+$pubAlv = isset($_POST['pubAlv']) ? $_POST['pubAlv'] : '';
+$dtInicio = isset($_POST['DtInicio']) ? $_POST['DtInicio'] : '';
+$dtFinal = isset($_POST['DtFinal']) ? $_POST['DtFinal'] : '';
+$hrIni = isset($_POST['HrIni']) ? $_POST['HrIni'] : '';
+$hrFinal = isset($_POST['HrFinal']) ? $_POST['HrFinal'] : '';
+$tipo = isset($_POST['Tipo']) ? $_POST['Tipo'] : '';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -45,30 +54,30 @@ if ($resultado) {
         <h1 class="descer">Banner</h1>
         <form action="UploadBanner.php" method="post" enctype="multipart/form-data">
             <label for="title">Título:</label>
-            <input type="text" id="title" name="title" value="<?php echo $_POST['Titulo']; ?>">
+            <input type="text" id="title" name="title" value="<?php echo htmlspecialchars($titulo); ?>">
             
             <label for="descricao">Descrição:</label>
-            <textarea id="descricao" name="descricao" placeholder="Por favor seja direto"><?php echo $_POST['Descricao']; ?></textarea>
+            <textarea id="descricao" name="descricao" placeholder="Por favor seja direto"><?php echo htmlspecialchars($descricao); ?></textarea>
             
             <label for="alvo">Público alvo:</label>
-            <input type="text" id="alvo" name="alvo" placeholder="Ex: Integrado" value="<?php echo $_POST['pubAlv']; ?>">
+            <input type="text" id="alvo" name="alvo" placeholder="Ex: Integrado" value="<?php echo htmlspecialchars($pubAlv); ?>">
             
             <label for="dataInit">Data inicial:</label>
-            <input type="date" id="dataInit" name="dataInit" placeholder="Ex: 10/03/2024" value="<?php echo $_POST['DtInicio']; ?>">
+            <input type="date" id="dataInit" name="dataInit" value="<?php echo htmlspecialchars($dtInicio); ?>">
             
             <label for="dataFim">Data Final:</label>
-            <input type="date" id="dataFim" name="dataFim" placeholder="Ex: 10/03/2024" value="<?php echo $_POST['DtFinal']; ?>">
+            <input type="date" id="dataFim" name="dataFim" value="<?php echo htmlspecialchars($dtFinal); ?>">
             
             <label for="horaInit">Horário de início:</label>
-            <input type="time" id="horaInit" name="horaInit" placeholder="Ex: 10:10" value="<?php echo $_POST['HrIni']; ?>">
+            <input type="time" id="horaInit" name="horaInit" value="<?php echo htmlspecialchars($hrIni); ?>">
             
             <label for="horaFim">Horário de Término:</label>
-            <input type="time" id="horaFim" name="horaFim" placeholder="Ex: 10:10" value="<?php echo $_POST['HrFinal']; ?>">
+            <input type="time" id="horaFim" name="horaFim" value="<?php echo htmlspecialchars($hrFinal); ?>">
             
             <label for="tipo">Tipo:</label>
             <select id="tipo" name="tipo">
-                <option value="aviso" <?php if ($_POST['Tipo'] == 'aviso') echo 'selected'; ?>>Aviso</option>
-                <option value="anuncio" <?php if ($_POST['Tipo'] == 'anuncio') echo 'selected'; ?>>Anuncio</option>
+                <option value="aviso" <?php if ($tipo == 'aviso') echo 'selected'; ?>>Aviso</option>
+                <option value="anuncio" <?php if ($tipo == 'anuncio') echo 'selected'; ?>>Anuncio</option>
             </select>
             <label class="custom-upload" for="banner">Upload do banner</label>
             <input type="file" id="banner" name="imagens[]" class="hidden-upload" multiple required>
