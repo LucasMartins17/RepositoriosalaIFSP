@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 if (!isset($_SESSION['email'])) {
@@ -16,10 +15,10 @@ if ($id_banner === null) {
 }
 
 // Consulta para obter os detalhes do banner, incluindo o caminho da imagem
-$sql = "SELECT uf.IdUserForm, uf.Titulo, uf.Descricao, uf.DtInicio, uf.DtFinal, uf.HrIni, uf.HrFinal, uf.Tipo, uf.pubAlv, uf.NomeUsuario, a.caminhoImg
+$sql = "SELECT uf.IdUserForm, uf.Titulo, uf.Descricao, uf.DtInicio, uf.DtFinal, uf.HrIni, uf.HrFinal, uf.Tipo, uf.pubAlv, uf.NomeUsuario, uf.caminhoImg
         FROM UserForm uf
-        INNER JOIN artes a ON uf.IdUserForm = a.IdForm
         WHERE uf.IdUserForm = ?";
+
 $stmt = $conexao->prepare($sql);
 $stmt->bind_param("i", $id_banner);
 $stmt->execute();
@@ -65,7 +64,11 @@ $conexao->close();
             <h2>Imagem: </h2>
             <br>
             <!-- Exibir a imagem do banner -->
-            <img src="../<?php echo $banner["caminhoImg"]; ?>" alt="Imagem do Banner" width = "200px">
+            <?php if (!empty($banner["caminhoImg"])): ?>
+                <img src="<?php echo "../" . $banner["caminhoImg"]; ?>" alt="Imagem do Banner" width="200px">
+            <?php else: ?>
+                <p>Imagem não disponível.</p>
+            <?php endif; ?>
         </div>
         <form action="UparBannerUser/TxtBanner.php" method="post">
             <input type="hidden" name="NomeUsuario" value="<?php echo htmlspecialchars($banner["NomeUsuario"]); ?>">
@@ -77,9 +80,8 @@ $conexao->close();
             <input type="hidden" name="HrIni" value="<?php echo htmlspecialchars($banner["HrIni"]); ?>">
             <input type="hidden" name="HrFinal" value="<?php echo htmlspecialchars($banner["HrFinal"]); ?>">
             <input type="hidden" name="Descricao" value="<?php echo htmlspecialchars($banner["Descricao"]); ?>">
-    <button type="submit">Upload do banner</button>
-</form>
-
+            <button type="submit">Upload do banner</button>
+        </form>
     </div>
 </body>
 </html>

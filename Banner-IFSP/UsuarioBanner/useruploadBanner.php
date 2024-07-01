@@ -40,67 +40,35 @@ if (empty($titulo) || empty($descricao) || empty($pubAlvo) || empty($dataInit) |
         $stmt->fetch();
         $stmt->close();
 
-        // Inserir dados na tabela form
-        $comandoForm = "INSERT INTO form (Titulo, Descricao, DtInicio, DtFinal, HrIni, HrFinal, Tipo, pubAlv) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        $stmtForm = mysqli_prepare($conexao, $comandoForm);
+        // Preparar caminho da imagem para inserção
+        $caminhoImg = ""; // Inicializar variável
 
-        if ($stmtForm) {
-            mysqli_stmt_bind_param($stmtForm, "ssssssss", $titulo, $descricao, $dataInit, $dataFim, $horaInit, $horaFim, $tipo, $pubAlvo);
-            $resultadoForm = mysqli_stmt_execute($stmtForm);
+        // Para cada imagem enviada, realizar o upload
+        foreach ($imagens['tmp_name'] as $img => $tmp_name) {
+            if ($tmp_name) {
+                $imagem_nome = $imagens['name'][$img];
+                $destino = "../UserUploads/" . $imagem_nome;
+                $destino2 = "UserUploads/" . $imagem_nome;
+                move_uploaded_file($tmp_name, $destino);
 
-            if ($resultadoForm) {
-                $idForm = mysqli_insert_id($conexao);
+                // Definir o caminho da imagem para ser inserido em userform
+                $caminhoImg = $destino2; // Usando o caminho relativo
+            }
+        }
 
-                // Preparar caminho da imagem para inserção
-                $caminhoImg = ""; // Inicializar variável
+        // Inserir dados na tabela userform
+        $comandoUserForm = "INSERT INTO userform (Titulo, Descricao, DtInicio, DtFinal, HrIni, HrFinal, Tipo, pubAlv, NomeUsuario, EmailUsuario, idUsuario, caminhoImg) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmtUserForm = mysqli_prepare($conexao, $comandoUserForm);
 
-                // Para cada imagem enviada, realizar o upload
-                foreach ($imagens['tmp_name'] as $img => $tmp_name) {
-                    if ($tmp_name) {
-                        $imagem_nome = $imagens['name'][$img];
-                        $destino = "../UserUploads/" . $imagem_nome;
-                        $destino2 = "UserUploads/" . $imagem_nome;
-                        move_uploaded_file($tmp_name, $destino);
+        if ($stmtUserForm) {
+            mysqli_stmt_bind_param($stmtUserForm, "ssssssssssss", $titulo, $descricao, $dataInitFull, $dataFimFull, $horaInit, $horaFim, $tipo, $pubAlvo, $nomeUsuario, $emailUsuario, $idUsuario, $caminhoImg);
+            
+            $resultadoUserForm = mysqli_stmt_execute($stmtUserForm);
 
-                        // Definir o caminho da imagem para ser inserido em userform
-                        $caminhoImg = $destino2; // Usando o caminho relativo
-
-                        // Inserir dados na tabela artes
-                        $comandoArtes = "INSERT INTO artes (IdForm, Titulo, caminhoImg) VALUES (?, ?, ?)";
-                        $stmtArtes = mysqli_prepare($conexao, $comandoArtes);
-
-                        if ($stmtArtes) {
-                            mysqli_stmt_bind_param($stmtArtes, "iss", $idForm, $titulo, $caminhoImg);
-                            $resultadoArtes = mysqli_stmt_execute($stmtArtes);
-
-                            if (!$resultadoArtes) {
-                                throw new Exception(mysqli_error($conexao));
-                            }
-                        } else {
-                            throw new Exception(mysqli_error($conexao));
-                        }
-                    }
-                }
-
-                // Inserir dados na tabela userform
-                $comandoUserForm = "INSERT INTO userform (Titulo, Descricao, DtInicio, DtFinal, HrIni, HrFinal, Tipo, pubAlv, NomeUsuario, EmailUsuario, idUsuario, caminhoImg) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                $stmtUserForm = mysqli_prepare($conexao, $comandoUserForm);
-
-                if ($stmtUserForm) {
-                    mysqli_stmt_bind_param($stmtUserForm, "ssssssssssss", $titulo, $descricao, $dataInitFull, $dataFimFull, $horaInit, $horaFim, $tipo, $pubAlvo, $nomeUsuario, $emailUsuario, $idUsuario, $caminhoImg);
-                    
-                    $resultadoUserForm = mysqli_stmt_execute($stmtUserForm);
-
-                    if ($resultadoUserForm) {
-                        mysqli_commit($conexao);
-                        header("Location: ../index.php");
-                        exit();
-                    } else {
-                        throw new Exception(mysqli_error($conexao));
-                    }
-                } else {
-                    throw new Exception(mysqli_error($conexao));
-                }
+            if ($resultadoUserForm) {
+                mysqli_commit($conexao);
+                header("Location: ../index.php");
+                exit();
             } else {
                 throw new Exception(mysqli_error($conexao));
             }
