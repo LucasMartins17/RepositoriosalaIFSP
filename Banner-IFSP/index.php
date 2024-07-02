@@ -54,7 +54,7 @@
                 </div>
                 <div class="button">
                     <img src="icons/Feedback.webp" alt="">
-                    <a href="#">Fale <span class="highlight">Conosco</span></a>
+                    <a href="Feedbacks/index.php">Fale <span class="highlight">Conosco</span></a>
                 </div>
             </div>
         </main>

@@ -174,8 +174,8 @@ $conn->close();
 </head>
 <body>
     <header>
-        <a href="#"><img class="back-button" src="assets/back-button.svg" alt="Voltar"></a>
-        <img src="assets/ifsp_logo_itp.png" alt="Instituto Federal" class="logo">
+        <a href="#"><img class="back-button" src="../Feedbacks/assets/back-button.svg" alt="Voltar"></a>
+        <img src="../Feedbacks/assets/ifsp_logo_itp.png" alt="Instituto Federal" class="logo">
     </header>
     <div class="container">
         <h1>Cadastre-se</h1>

@@ -5,13 +5,17 @@ require "config.php";
 $prontuario = $_POST['prontuario'];
 $senha = $_POST['senha'];
 
-$comando = "SELECT * FROM usuario WHERE prontuario = '$prontuario' AND senha = '$senha'";
-$resultado = mysqli_query($conn, $comando);
+// Preparar a consulta segura para evitar SQL Injection
+$stmt = $conn->prepare("SELECT * FROM usuario WHERE prontuario = ?");
+$stmt->bind_param("s", $prontuario);
+$stmt->execute();
+$resultado = $stmt->get_result();
 
-if ($resultado) {
-    $nLinhas = mysqli_num_rows($resultado);
-    if ($nLinhas == 1) {
-        $usuario = mysqli_fetch_assoc($resultado);
+if ($resultado->num_rows > 0) {
+    $usuario = $resultado->fetch_assoc();
+    
+    // Verificar a senha
+    if (password_verify($senha, $usuario['senha'])) {
         $_SESSION['prontuario'] = $prontuario;
         $_SESSION['id_func'] = $usuario['id_func'];
 
@@ -28,8 +32,11 @@ if ($resultado) {
         exit();
     }
 } else {
-    $_SESSION['erro'] = "Erro na consulta ao banco de dados";
+    $_SESSION['erro'] = "Prontuário ou senha inválidos.";
     header("Location: login.php");
     exit();
 }
+
+$stmt->close();
+$conn->close();
 ?>
