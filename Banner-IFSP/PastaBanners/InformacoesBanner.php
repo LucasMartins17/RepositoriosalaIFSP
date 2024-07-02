@@ -70,6 +70,7 @@ $conexao->close();
                 <p>Imagem não disponível.</p>
             <?php endif; ?>
         </div>
+        <div class="btn">
         <form action="UparBannerUser/TxtBanner.php" method="post">
             <input type="hidden" name="NomeUsuario" value="<?php echo htmlspecialchars($banner["NomeUsuario"]); ?>">
             <input type="hidden" name="Titulo" value="<?php echo htmlspecialchars($banner["Titulo"]); ?>">
@@ -80,8 +81,15 @@ $conexao->close();
             <input type="hidden" name="HrIni" value="<?php echo htmlspecialchars($banner["HrIni"]); ?>">
             <input type="hidden" name="HrFinal" value="<?php echo htmlspecialchars($banner["HrFinal"]); ?>">
             <input type="hidden" name="Descricao" value="<?php echo htmlspecialchars($banner["Descricao"]); ?>">
-            <button type="submit">Upload do banner</button>
+            <button type="submit" class="upload">Upload do banner</button>
+            
         </form>
+        <form action="DeletarBanner/DeletarBanner.php" method="post" onsubmit="return confirm('Tem certeza que deseja excluir este banner?');">
+            <input type="hidden" name="id_banner" value="<?php echo $id_banner; ?>">
+            <button type="submit" class = "deletar">Excluir Banner</button>
+        </form>
+        </div>
+        </div>
     </div>
 </body>
 </html>
