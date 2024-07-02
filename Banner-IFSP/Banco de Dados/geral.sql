@@ -120,13 +120,13 @@ CREATE TABLE Artes (
 
 -- Criação da tabela Form
 CREATE TABLE Armario (
-    Id INT AUTO_INCREMENT PRIMARY KEY,
+    idArmario INT AUTO_INCREMENT PRIMARY KEY,
     Estado Boolean NOT NULL,
-    Id_usuario INT NOT NULL,
+    IdUsuario INT,
     Nome VARCHAR (255) NOT NULL,
     Dt_Emprestimo DATETIME NOT NULL,
-    FOREIGN KEY (Id_usuario) REFERENCES usuario(Id)
-);
+    FOREIGN KEY (IdUsuario) REFERENCES usuario(idUsuario)
+    );
 
 ----------------------------------- Fim da parte do Grupo dos Armarios -----------------------------------
 
