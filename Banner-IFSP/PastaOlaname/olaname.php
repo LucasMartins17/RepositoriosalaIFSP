@@ -46,9 +46,9 @@ if ($resultado) {
     <h1>Ola <span><?php echo $_SESSION['nome']; ?>!</span></h1>
         
         <div class="meus-anuncios">
-            <a href="../PastaBanners/pagBanners.php"><h2>Banners recebidos</h2></a>
-            <a href="../PastaTextBanner/TxtBanner.php"><h2>Upload banner</h2></a>
-            <a href="../Anuncio/Anuncio.php"><h2>Anuncios</h2></a>
+            <a href="../PastaBanners/pagBanners.php" target="_blank"><h2>Banners recebidos</h2></a>
+            <a href="../PastaTextBanner/TxtBanner.php" target="_blank"><h2>Upload banner</h2></a>
+            <a href="../Anuncio/Anuncio.php" target="_blank"><h2>Anuncios</h2></a>
         </div>
     </div>
 </body>
