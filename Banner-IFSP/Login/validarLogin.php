@@ -17,7 +17,7 @@ if ($resultado) {
 
         // Verifica o id_func do usuário
         if ($usuario['id_func'] == 5) {
-            header("Location: ../UsuarioBanner/UserTxtBanner.php");
+            header("Location: ../index.php");
         } else {
             header("Location: ../PastaOlaname/olaname.php");
         }
