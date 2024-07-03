@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informações anuncios</title>
+    <title>Informações anúncios</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,13 +13,35 @@
         header("Location: ../Login/login.php");
         exit();
     }
+
+    // Conexão com o banco de dados
+    require "../Conexao/Conexao.php";
+
+    // Obtém o email da sessão
+    $email = $_SESSION['email'];
+
+    // Consulta para obter o id_func do usuário
+    $comando = "SELECT id_func FROM usuario WHERE email = '$email'";
+    $resultado = mysqli_query($conexao, $comando);
+
+    if ($resultado) {
+        $usuario = mysqli_fetch_assoc($resultado);
+        if ($usuario['id_func'] != 5) {
+            header("Location: ../PastaTextBanner/TxtBanner.php");
+            exit();
+        }
+    } else {
+        $_SESSION['erro'] = "Erro na consulta ao banco de dados";
+        header("Location: ../Login/login.php");
+        exit();
+    }
     ?>
     <header>
         <a href="#"><img class="back-button" src="icons/back-button.svg" alt="Voltar"></a>
         <img src="icons/ifsp_logo_itp.png" alt="Instituto Federal" class="logo">
     </header>
     <div class="container">
-        <h1>Insira o txto do</h1>
+        <h1>Insira o texto do</h1>
         <h1 class="descer">Banner</h1>
         <form action="useruploadBanner.php" method="post" enctype="multipart/form-data">
             <label for="title">Título:</label>

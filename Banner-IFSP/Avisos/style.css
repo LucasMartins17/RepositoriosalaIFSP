@@ -10,9 +10,8 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    overflow-y: hidden;
+    overflow-y: auto; /* Permitir rolagem no corpo se necessário */
 }
-
 
 header {
     width: 100%;
@@ -25,7 +24,6 @@ header {
     /* position: sticky; */
     top: 0;
 }
-
 
 .back-button {
     width: 60px;
@@ -41,24 +39,23 @@ header {
     margin-top: 5vh;
 }
 
-
 .material-symbols-outlined {
     font-size: 90px;
 }
-.title-section{
+
+.title-section {
     display: flex;
-    align-items:flex-end ;
+    align-items: flex-end;
     width: 800px;
     margin-top: 5vh;
 }
 
-.title-section h1{
+.title-section h1 {
     padding: 0;
     margin: 0;
     font-size: 80px;
     margin-left: 50px;   
 }
-
 
 .notice {
     border: 1px solid #ddd;
@@ -66,47 +63,46 @@ header {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     align-items: flex-start;
     justify-content: space-evenly;
     width: 900px;
-    margin-top: 10%;
-
+    margin-top: 1%;
 }
 
-.notice > .date{
+.notice > .date {
     font-weight: bold;
 }
 
-.notice-body > p{
+.notice-body > p {
     margin-top: 4%;
-    font-weight:400;
+    font-weight: 400;
 }
 
 .add-button {
-  padding: 2vh;
-  border-radius: 8vh;
-  width: 18%;
-  border: none;
-  margin-top: 4%;
-  color: white;
-  font-weight: bold;
-  background-color: #008000;
-  font-size: 2vh;
+    padding: 2vh;
+    border-radius: 8vh;
+    width: 18%;
+    border: none;
+    margin-top: 1%;
+    margin-bottom: 3%;
+    color: white;
+    font-weight: bold;
+    background-color: #008000;
+    font-size: 2vh;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
 }
-
-
-
-
 
 .title-section > img {
     width: 10vh;
     margin-left: 25vh;
 }
 
-main{
+main {
     display: flex;
     flex-direction: column;
     align-items: center;
     align-content: center;
+    overflow-y: auto; /* Permitir rolagem no main */
 }
