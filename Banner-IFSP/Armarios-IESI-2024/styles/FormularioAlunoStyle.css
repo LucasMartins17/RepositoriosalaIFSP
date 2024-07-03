@@ -1,0 +1,121 @@
+:root {
+    --green--if: #008000; /* Verde do if */
+    --white--if: #ffffff; /* Branco */
+    --grey--if: #f9f9f9;  /* Cinza claro */
+    --black--if: #000000; /* Preto */
+    --border--if: #ccc;   /* Cinza para borda */
+    --text--primary: #555; /* Cor primária do texto */
+    --hover--bg: #f0f0f0; /* Cor de fundo no hover */
+    --hover--btn: #45a049; /* Cor de fundo no hover do botão */
+    --error: red; /* Cor de erro */
+    --success: #4CAF50; /* Cor de sucesso */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: var(--white--if);
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--white--if);
+    padding: 20px; /* Adiciona um padding para dar um espaçamento interno */
+    width: 100%; /* O contêiner ocupa toda a largura */
+    height: 100%; /* O contêiner ocupa toda a altura */
+}
+
+
+header {
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--white--if);
+    border-bottom: 1px solid var(--border--if);
+    /* position: sticky; */
+    top: 0;
+}
+
+.back-button {
+    width: 44px;
+    text-decoration: none;
+    color: var(--black--if);
+}
+
+.loginBtn{
+    align-self: center;
+    background-color: #008000;  
+    padding: 0.50rem;
+    width: 10%;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 1rem;
+    border: none;
+    display: flex;
+    justify-content: space-around;
+    color: var(--white--if);
+    text-decoration: none;
+}
+
+.logo {
+    height: 80px;
+}
+
+h1 {
+    margin: 20px 0;
+    color: var(--black--if);
+}
+
+h1 span {
+    color: var(--green--if);
+}
+
+.form{
+    background-color: var(--grey--if);
+    padding: 2rem;
+    height: 50vh;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.form select{
+    margin-top: 3rem;
+    background-color: var(--border--if);
+    padding: 1.25rem;
+    border: none;
+    border-radius: 10px;
+}
+.form-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.button-form button{
+    margin-top: 4rem;
+    background-color: var(--green--if);
+    width: 10vw;
+    border-radius: 20px;
+    font-size: x-large;
+}

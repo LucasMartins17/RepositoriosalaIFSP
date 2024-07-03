@@ -1,0 +1,228 @@
+
+       :root {
+    --green--if: #008000; /* Verde do if */
+    --white--if: #ffffff; /* Branco */
+    --grey--if: #f9f9f9;  /* Cinza claro */
+    --black--if: #000000; /* Preto */
+    --border--if: #ccc;   /* Cinza para borda */
+    --text--primary: #555; /* Cor primária do texto */
+    --hover--bg: #f0f0f0; /* Cor de fundo no hover */
+    --hover--btn: #45a049; /* Cor de fundo no hover do botão */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: var(--white--if);
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--white--if);
+    padding: 20px; /* Adiciona um padding para dar um espaçamento interno */
+    width: 100%; /* O contêiner ocupa toda a largura */
+    height: 100%; /* O contêiner ocupa toda a altura */
+}
+
+header {
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--white--if);
+    border-bottom: 1px solid var(--border--if);
+    /* position: sticky; */
+    top: 0;
+}
+
+.back-button {
+    width: 44px;
+    text-decoration: none;
+    color: var(--black--if);
+}
+
+.loginBtn{
+    align-self: center;
+    background-color: #008000;  
+    padding: 0.50rem;
+    width: 10%;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 1rem;
+    border: none;
+    display: flex;
+    justify-content: space-around;
+    color: var(--white--if);
+    text-decoration: none;
+}
+
+.logo {
+    height: 80px;
+}
+
+.titulo {
+    margin: 20px 0;
+    color: var(--black--if);
+    padding: 1.5rem;
+    max-width: 400px;
+    gap: 15px;
+    width: 100%;
+}
+
+.titulo p{
+    font-weight: bolder;
+}
+
+.CaixaTexto {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--grey--if);
+    padding: 1rem;
+    height: 70%;
+    border-radius: 10px;
+    border: 2px, solid, black;
+    gap: 15px;
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+    overflow-y: scroll;
+   
+}
+.Convert{
+    padding: 0.50rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    gap: 15px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+#Button-convert{
+    background-color: #008000;
+    padding: 0.45rem;
+    width: 80%;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 1rem;
+    border: none;
+    display: flex;
+    justify-content: space-around;
+    color: var(--white--if);
+}
+
+
+
+
+.add-review-button {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    background-color: var(--green--if);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.add-feedback {
+    width: 55vh; /* Ajuste a largura conforme necessário */
+    max-width: 400px; /* Ou qualquer valor desejado */
+    margin: 10px auto 20px; /* Altera a margem para centralizar */
+    padding: 20px;
+    background-color: var(--green--if);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Para dispositivos com largura máxima de 768px (tablets e abaixo) */
+@media (max-width: 768px) {
+    .add-feedback {
+        width: 80vw; /* Ajuste a largura para 80% da largura da viewport */
+        max-width: none; /* Remove o limite máximo de largura */
+        font-size: 18px; /* Ajusta o tamanho da fonte */
+        padding: 15px; /* Ajusta o padding */
+    }
+}
+
+/* Para dispositivos com largura máxima de 480px (telefones e abaixo) */
+@media (max-width: 480px) {
+    .add-feedback {
+        width: 90vw; /* Ajuste a largura para 90% da largura da viewport */
+        font-size: 16px; /* Ajusta o tamanho da fonte */
+        padding: 20px; /* Ajusta o padding */
+    }
+}
+
+
+.add-feedback:hover {
+    background-color: var(--hover--btn);
+}
+
+.add-review-button:hover {
+    background-color: var(--hover--btn);
+}
+
+.reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.review {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 1.5vh;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    word-break: break-all;
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.user-icon {
+    height: 50px;
+    width: 40px;
+    margin-right: 10px;
+    opacity: 0.8;
+}
+
+.date {
+    font-size: 14px;
+    color: #666;
+}
+.criticas_h1{
+    margin: 20px 0;
+    color: var(--black--if);
+    text-align: center;
+}
