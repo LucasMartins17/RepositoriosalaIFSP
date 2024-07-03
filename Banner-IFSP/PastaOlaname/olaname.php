@@ -23,8 +23,6 @@ if ($resultado) {
     header("Location: ../Login/login.php");
     exit();
 }
-
-
 ?>
 
 
@@ -39,16 +37,15 @@ if ($resultado) {
 <body>
     <header>
         <a href="#"><img class="back-button" src="icons/back-button.svg" alt="Voltar"></a>
-        
         <img src="icons/ifsp_logo_itp.png" alt="Instituto Federal" class="logo">
     </header>
     <div class="container">
-    <h1>Ola <span><?php echo $_SESSION['nome']; ?>!</span></h1>
-        
+        <h1>Ola <span><?php echo $_SESSION['nome']; ?>!</span></h1>
         <div class="meus-anuncios">
             <a href="../PastaBanners/pagBanners.php" target="_blank"><h2>Banners recebidos</h2></a>
             <a href="../PastaTextBanner/TxtBanner.php" target="_blank"><h2>Upload banner</h2></a>
             <a href="../Anuncio/Anuncio.php" target="_blank"><h2>Anuncios</h2></a>
+            <a href="logout.php"><h2>Logout</h2></a> <!-- Link de logout -->
         </div>
     </div>
 </body>
